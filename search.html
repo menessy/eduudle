@@ -1,0 +1,1212 @@
+<html>
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="jquery.mCustomScrollbar.concat.min.js"></script>
+        <style>
+            .jslider .jslider-bg i,
+            .jslider .jslider-pointer { background: url({{STATIC_URL}}jslider.png) no-repeat 0 0; }
+            .jslider_plastic .jslider-bg i,
+            .jslider_plastic .jslider-pointer { background-image: url({{STATIC_URL}}jslider.plastic.png); }
+        </style>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jslider.css" type="text/css">
+            
+	<script type="text/javascript" src="{{STATIC_URL}}js/jshashtable-2.1_src.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.numberformatter-1.2.3.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/tmpl.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.dependClass-0.1.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/draggable-0.1.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.slider.js"></script>
+        <style>
+	    .play_b {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background-color: rgba(255, 255, 255, 0.7);
+		-moz-border-radius:15px;
+		-webkit-border-radius:15px;
+		border-radius:15px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		color:#666666;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:4px;
+		text-decoration:none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: 5px;
+		margin-left: -20px;
+		opacity: 0;
+	    }.play_b:active {
+		position:relative;
+		top:1px;
+	    }
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            *{
+                font-family: sans-serif;                
+            }
+            .coursewall_course *, .coursewall_course, .row, .trans, .coursewall, #coursesss{
+                -webkit-transition: all 0.2s ease-in-out;
+                -moz-transition: all 0.2s ease-in-out;
+                -o-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+            }
+            .searchButton {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+		margin: 0;
+		float: right;
+            }
+            .searchButton:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .searchButton:active {
+                position:relative;
+                top:1px;
+            }
+            .course_d {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding: 6px;
+                text-decoration:none;
+            }
+            .course_d:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .course_d:active {
+                position:relative;
+                top:1px;
+            }                
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+		position: relative;
+            }
+            .header{
+                width: 100%;
+                height: 52px;
+                color: #ffffff;
+background: #73c0f4; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzczYzBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YTgwZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #73c0f4 0%, #4a80d3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73c0f4), color-stop(100%,#4a80d3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #73c0f4 0%,#4a80d3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73c0f4', endColorstr='#4a80d3',GradientType=0 ); /* IE6-8 */
+
+
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+                padding: 0;
+            }
+            .coursewall_course:hover{
+                box-shadow: 0px 0px 18px #8a8a8a;                
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 530px;
+                padding: 5px;
+                height: 153px;
+                border-right: 1px solid #8cdaff;
+                position: relative;
+            }
+	    .absooo{
+		position: absolute;
+		z-index: 999;
+		bottom: 15px;
+	    }
+            .coursewall_course_right{
+                float: left;
+                width: 181px;
+                padding: 5px;
+                height: 153px;
+                margin: 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }
+            .search{
+                margin: 6px 0 0 115px;
+                background: #ffffff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+                float: left;
+            }
+	    .search:hover{
+                box-shadow: 0px 0px 10px #ffffff; 
+	    }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .coursewall{
+                margin: 0 0 0 70px;
+                padding: 16px 10px 11px 10px;
+                font-size: 20px;
+                font-weight: 700;
+                /*background: #003366;*/
+		cursor: pointer;
+            }
+	    .coursewall:hover{
+                background: #005bb7;
+		
+	    }
+            .profile_menu{
+                margin: 6px 0 0 0;
+                padding: 10px 10px 5px 10px;
+                font-size: 20px;
+                font-weight: 700;         
+            }
+            .logo_anch{
+                color: #ffffff;
+                text-decoration: none;
+            }
+            .sorting{
+                float: right;
+                margin: 18px 0 0 0;
+            }
+            .course_short_desc{
+                font-size: 13px;
+                line-height: 16px;
+                opacity: 0;
+            }            
+            .lesser{
+                font-size: 13px;
+                color: #333;
+            }
+            .filters{
+                width: 188px;
+                padding: 0;
+                box-shadow: 0px 0px 18px #8a8a8a;   
+            }
+            .filter{
+                padding: 8px 12px;
+                box-shadow: 0px 0px 10px #8a8a8a; 
+                border: 1px solid #8cdaff;
+            }
+            .filter h4{
+                margin: 0;
+            }
+            .sub_filter{                
+                border-left: 1px solid #8cdaff;
+                border-right: 1px solid #8cdaff;
+                border-bottom: 1px solid #8cdaff;
+                padding: 8px 0;
+            }
+            .featured_course_count{
+                float: left;
+            }
+            .featured_course_header{
+                border-left: 1px solid #8cdaff;
+                border-right: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .row{
+                padding: 2px 7px;
+		cursor: pointer;
+            }
+            .row:hover{
+                background: rgba(12, 198, 252, 0.2);
+            }
+            .view_course_details{
+                opacity: 0;
+                margin: 0 15px;
+            }
+            .add_to_coursewall{
+                opacity: 0;
+                margin: 0 15px;
+            }
+            .high_field{
+                height: 28px;
+            }
+            .coursewall_course_price{
+                background: url('{{STATIC_URL}}price_background.png');
+                color: #ffffff;
+                float: left;
+                width: 54px;
+                height: 20px;
+                margin: 5px 0 0 0;
+                padding: 7px;
+                font-weight: 700;
+                /*position: absolute;*/
+                left: -6px;
+            }
+            .filter_img{
+                height: 20px;
+                margin: 3px 0 0 0;
+            }
+            
+            
+            .add_to_b {
+                float: left;
+	-moz-box-shadow:inset 0px 1px 0px 0px #37472a;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #37472a;
+	box-shadow:inset 0px 1px 0px 0px #37472a;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9ac473), color-stop(1, #506b3b) );
+	background:-moz-linear-gradient( center top, #9ac473 5%, #506b3b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9ac473', endColorstr='#506b3b');
+	background-color:#9ac473;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 10px 6px 5px;
+	text-decoration:none;
+}.add_to_b:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #506b3b), color-stop(1, #9ac473) );
+	background:-moz-linear-gradient( center top, #506b3b 5%, #9ac473 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#506b3b', endColorstr='#9ac473');
+	background-color:#506b3b;
+}.add_to_b:active {
+	position:relative;
+	top:1px;
+}
+.course_short_desc{
+height: 60px;
+}
+				    .divhack{
+					position: absolute;
+					z-index: 999;
+					height: 25px;
+					width: 25px;
+				    }
+	    .dropdown{
+		position: absolute;
+		background: #f2f2f2;
+		right: 0;
+		top: 52px;
+		z-index: 9999;
+		display: none;
+		border-bottom: 2px solid #bcbcbc;
+		width: 125px;
+	    }
+	    .daaa{
+		color: #333;
+		text-decoration: none;
+		padding: 10px;
+		margin: 0 0 2px 0;
+		float: left;
+		clear: both;
+		width: 105px;
+	    }
+	    .daaa:hover{
+		color: #fff;
+		background: #333;
+		margin: 0 0 0 0;
+		border-bottom: 2px solid #d8d8d8;
+	    }
+	    .loginButton{
+		color: #fff;
+		text-decoration: none;
+	    }
+	    .loginButton:hover{
+		color: #e1e1ff;
+	    }
+	    .uni_img{
+		float: right;
+		max-width: 100px;
+		margin: 3px 0px 2px 7px;
+		max-height: 40px;
+	    }
+            .loginButton{
+                text-decoration: none;
+                color: #ffffff;
+                /*background: #004e9b;*/
+                font-size: 18px;
+                padding: 2px 5px 2px 5px;
+                color: #f8f8f8;
+            }
+            .loginButton:hover{
+                color: #ebebeb;
+            }
+	    .dropdown2{
+		position: absolute;
+		background: #f2f2f2;
+		right: 0;
+		top: 52px;
+		z-index: 9999;
+		display: none;
+                border: 1px solid #bcbcbc;
+		border-bottom: 2px solid #bcbcbc;
+                border-top: 0px;
+		width: 225px;
+                color: #333;
+                box-shadow: 0px 0px 18px #8a8a8a; 
+	    }
+            .username{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+            .password{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+        </style>
+    </head>
+    <body>
+	<script>
+	    function show_vid(video_url){
+		$('.elvid').html('<iframe width="560" height="315" src="' + video_url + '" frameborder="0" allowfullscreen></iframe>');
+		$('.whityy, .elvid').fadeIn();
+	    }
+	    function hide_vid(){
+		$('.elvid').html('');
+		$('.whityy, .elvid').fadeOut();
+	    }
+	    $(document).mouseup(function (e)
+	    {
+		var container = $('.elvid');
+	    
+		if (container.has(e.target).length === 0)
+		{
+		    hide_vid();
+		}
+	    });
+	</script>
+	<style>	    
+	    .whityy{
+		background: rgba(255,255,255,0.6);
+		position: fixed;
+		z-index: 999;
+		height: 100%;
+		width: 100%;
+		display: none;
+	    }
+	    /*javascript: show_vid({{ course.youtube_video }});*/
+	    .elvid{
+		display: none;
+		background: rgba(0,0,0,0.7);
+		padding: 5px;
+		position: fixed;
+		width: 560px;
+		height: 315px;
+		z-index: 99999;
+		top: 50%;
+		left: 50%;
+		margin: -157px 0 0 -280px;
+	    }
+	</style>
+	<div class="whityy"></div>
+	<div class='elvid'>
+	    
+	</div>
+	
+	<script>
+	    function makeBlue(el_id){
+		removeFromQuery('sorting', 'relevancy');
+		removeFromQuery('sorting', 'rating');
+		removeFromQuery('sorting', 'addcount');
+		removeFromQuery('sorting', 'date');
+		removeFromQuery('sorting', 'price');
+		addToQuery('sorting', el_id);
+		el_id = '#' + el_id
+		$('#relevancy, #rating, #addcount, #date, #price').addClass('gscale');
+		$(el_id).removeClass('gscale');
+	    }
+	    var query = 'search&term="{{term}}""';
+	    var current_price_range = $("#Slider1").val();
+	    var counter = 0;
+	    function add_to_course_wall(courseId){
+		$.post('/add_to_coursewall/' + courseId,
+		       function(response){
+			    alert(response);
+		       }
+		);
+	    }
+	    function update_results(){
+		update_slider_value();
+		$.post('/ajaxsearch',
+		       {'query':query},
+		       function(response){
+			    $('#coursesss').html(response);
+		       }
+		);
+	    }
+	//    $('input[type=checkbox]').click(function(e){
+	//	e.stopPropagation();
+	//    });
+	    function addToQuery(field, value){
+		var f = '&' + field + '="' + value +'""';
+		query += f;
+		$('#coursesss').css('opacity', '0');
+		update_results();
+		$('#coursesss').css('opacity', '1');
+	    }
+	    function removeFromQuery(field, value){
+		var f = '&' + field + '="' + value +'""';
+		query = query.replace(f, '');
+		$('#coursesss').css('opacity', '0');
+		update_results();
+		$('#coursesss').css('opacity', '1');
+	    }    
+	    function test(box_id){
+		$(box_id).attr('checked', !$(box_id).attr('checked'));
+	    }
+            function checkABox(box_id, field, value){
+            
+                  // $(box_id).attr('checked', !$(box_id).attr('checked'));
+		            
+		    
+                if ( $(box_id).is(':checked') ){
+                 $(box_id).prop('checked', false);
+                 removeFromQuery(field, value);
+		    }
+                else{
+                    $(box_id).prop('checked', true);
+		            addToQuery(field, value);
+		    }
+        }
+	    window.setInterval(function(){update_slider_value();}, 1000);
+	    function update_slider_value(){
+		if ($('#Slider1').val() != current_price_range){
+		    current_price_range = $('#Slider1').val();		    
+		    var f = '&pricerange="' + String($('#Slider1').val()) + '""'
+		    if (query.indexOf('&pricerange=') !== -1){
+			query = query.replace('&pricerange="', '');
+		    }
+		    query += f;
+		    if (counter == 0){
+			counter += 1;
+		    }
+		    else{
+			$('#coursesss').css('opacity', '0');
+			update_results();
+			$('#coursesss').css('opacity', '1');
+		    }
+		}
+	    }
+	    function toogleDropp(){
+		$('#droppaya').toggle();
+		console.log('called!');
+	    }
+	    $(document).mouseup(function (e)
+	    {
+		var container = $('#droppaya');
+	    
+		if (container.has(e.target).length === 0)
+		{
+		    container.hide();
+		}
+	    });
+	    function submitaform(form_id){
+		$(form_id).submit();
+	    }
+	    
+	    
+	    
+	    
+	    function toogleDropp2(){
+		$('#droppaya2').toggle();
+		console.log('called!');
+	    }
+	    $(document).mouseup(function (e)
+	    {
+		var container = $('#droppaya2');
+	    
+		if (container.has(e.target).length === 0)
+		{
+		    container.hide();
+		}
+	    });
+	</script>
+        <div class="header">
+            <div class="wrapper">
+		{% if not logged %}
+		<div id="droppaya2" class="dropdown2">
+                    <form id="signin" method="POST" action="/login" >
+                        <div style="float: right;" class="username">
+                            Email <input class="search_field" style="width: 120px; margin: 0 0 0 4px;" name="email" type="text"/>
+                        </div>
+                        <div style="float: right;" class="password">
+                            Password <input class="search_field" style="width: 120px; margin: 0 0 0 4px;" name="password" type="password"/>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <a  class="searchButton" style="float: right; margin: 6px;" href="javascript: submitaform('#signin');">Login</a>
+                    </form>
+		</div>
+		{% else %}
+		<div id="droppaya" class="dropdown">
+		    <a class="daaa" href="/logout">Log Out</a>
+		    <a class="daaa" href="/profile">Edit Profile</a>
+		</div>
+		{% endif %}
+                <div style="float: left; margin: 5px 0 0 0;" class="logo">
+                    <h1>
+                        <a class="logo_anch" href="/">eduudle</a>
+                    </h1>
+                </div>
+		<form method="get" action="/search">
+		    <div class="search">
+			<img style="margin: 6px 5px 0 5px; height: 18px; width: 18px; float: left;" src="{{STATIC_URL}}icons/search.png"/>
+			<input class="search_field high_field" style="margin: 3px 0 0 0; width: 210px; float: left; outline: none; font-size: 18px; color: #333;" type="text" name="term" value="{{term}}"/>
+			<input type="submit" class="searchButton" value="Search"></input>
+			<!--<a href="/search"><img src="{{STATIC_URL}}buttons/search.png"/></a>-->
+		    </div>
+                {% if not logged %}		
+                        <a style="margin: 10px 0 0 0; float: right;" class="loginButton" href="javascript: toogleDropp2();">Login</a>
+                {% else %}
+		<div style="float: right;">
+		    <div style="float: left;" onclick="location.href='/coursewall'" class="coursewall">
+			<img style="margin: 3px 4px 0 0; float: left;" src="{{STATIC_URL}}icons/coursewall.png"/></a>
+			<span style="float: left;">CourseWall</span>
+		    </div>
+		    <div style="float: left;" class="profile_menu" onclick="toogleDropp()">
+			<img style="float: left;" src="{{ logged.avatar }}"/> <span style="float: left; cursor: pointer;">{{ logged.name }}</span> <img style="width: 10px; height: 8px; margin: 9px 0 0 10px; cursor: pointer;" src="{{STATIC_URL}}menu.png"/>
+		    </div>
+		</div>
+                
+                {% endif %}
+            </div>
+	</div>
+        <div style="clear: both;"></div>
+        <div class="wrapper">
+            <div class="lefty">
+                <h4>
+                    Filter down results
+                </h4>
+                <div class="filters">
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#prices_head', '#prices', '#price_tag')" onmouseout="toggle_filter('remove_blue', '#prices_head', '#prices', '#price_tag')">
+                        <div class="filter trans" id="prices_head">
+                            <h4 style="float: left;" class="trans" id="price_tag">
+                                Price
+                            </h4>
+                            <a href="javascript: toggle_sub('#prices', '#price_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="prices">
+                            <div class="lesser">
+				{% for i in prices %}
+				    <div class="row" onclick="checkABox('#prices_{{i.0}}', 'price', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#prices_{{i.0}}', 'price', '{{i.0}}')"></div>
+					    <input id="prices_{{i.0}}" type="checkbox" />
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.1}}
+					</div>
+					<div style="float: left;">
+					    ({{i.2}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{% endfor %}
+                            </div>
+                            <div class="layout-slider" style="padding: 2px;">
+                                <span style="margin: 20px 10px 10px 10px; display: inline-block; width: 150px; padding: 0 5px;"><input id="Slider1" type="slider" name="price" value="{{price_range.0}};{{price_range.1}}" /></span>
+                            </div>
+                            <script type="text/javascript" charset="utf-8">
+                                jQuery("#Slider1").slider({ from: 0, to: 100, step: 5, smooth: true, round: 0, dimension: "&nbsp;$", skin: "plastic", onstatechange: update_slider_value(), });
+                            </script>
+        
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#uni_head', '#universities', '#uni_tag')" onmouseout="toggle_filter('remove_blue', '#uni_head', '#universities', '#uni_tag')">
+                        <div class="filter trans" id="uni_head">
+                            <h4 style="float: left;" id="uni_tag" class="trans">
+                                University
+                            </h4>
+                            <a href="javascript: toggle_sub('#universities', '#uni_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="universities">
+                            <div class="lesser">
+				
+				
+				
+				<div class="row" onclick="checkABox('#universities_all', 'university', 'all')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					<div class="divhack" onclick="checkABox('#universities_all', 'university', 'all')"></div>
+					    <input id="universities_all" type="checkbox" checked="checked" checked="false"/>
+					</div>
+					<div style="width: 121px; float: left;">ALL</div>
+					<div style="float: left;">
+					    ({{ count_courses }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>			
+				
+				{% for i in universities %}
+				    
+				
+				    <div class="row" onclick="checkABox('#universities_{{ i.0 }}', 'university', '{{ i.0 }}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#universities_{{ i.0 }}', 'university', '{{ i.0 }}')"></div>
+					    <input id="universities_{{ i.0 }}" type="checkbox" />
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{ i.1 }}
+					</div>
+					<div style="float: left;">
+					    ({{ i.2 }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>	
+				    			    
+				{% endfor %}
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#crs_head', '#ratings', '#crs_tag')" onmouseout="toggle_filter('remove_blue', '#crs_head', '#ratings', '#crs_tag')">
+                        <div class="filter trans" id="crs_head">
+                            <h4 style="float: left;" id="crs_tag" class="trans">
+                                Course Rating
+                            </h4>
+                            <a href="javascript: toggle_sub('#ratings', '#ratings_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="ratings">
+                            <div class="lesser">
+                    
+                    
+                    <div class="row" onclick="checkABox('#ratings_all', 'rating', 'all')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#ratings_all', 'rating', 'all')"></div>
+					    <input id="ratings_all" type="checkbox" checked="checked"/>
+					</div>
+					<div style="width: 121px; float: left;">All</div>
+					<div style="float: left;">
+					    ({{ count_courses }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>	      
+                            
+                            
+				{% for i in ratings %}      
+				    <div class="row" onclick="checkABox('#ratings_{{i.0}}', 'rating', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#ratings_{{i.0}}', 'rating', '{{i.0}}')"></div>
+					    <input id="ratings_{{i.0}}" type="checkbox"/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    {% if i.0 != 0 %}
+					    <img src="{{STATIC_URL}}rating/{{i.0}}.png"/>
+					    {% else %}
+					    Not rated
+					    {% endif %}
+					</div>
+					<div style="float: left;">
+					    ({{i.1}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{% endfor %}
+                            </div>    
+                        </div>
+                    </div>
+		    
+		    
+		    
+		    
+		    
+		    
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#subject_head', '#subject', '#subject_tag')" onmouseout="toggle_filter('remove_blue', '#subject_head', '#subject', '#subject_tag')">
+                        <div class="filter trans" id="subject_head">
+                            <h4 style="float: left;" class="trans" id="subject_tag">
+                                Subject
+                            </h4>
+                            <a href="javascript: toggle_sub('#subject', '#subject_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="subject">
+                            <div class="lesser">
+				
+				<div class="row" onclick="checkABox('#subjects_all', 'subject', 'all')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#subjects_all', 'subject', 'all')"></div>
+					    <input id="subjects_all" type="checkbox" checked="checked"/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    All
+					</div>
+					<div style="float: left;">
+					    ({{ count_courses }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>	
+				
+				
+				{% for i in subjects %}
+				    <div class="row" onclick="checkABox('#subjects_{{i.0}}', 'subject', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#subjects_{{i.0}}', 'subject', '{{i.0}}')"></div>
+					    <input id="subjects_{{i.0}}" type="checkbox"/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.1}}
+					</div>
+					<div style="float: left;">
+					    ({{i.2}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{% endfor %}
+				
+                            </div>
+                        </div>
+                    </div>
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#crs_avail_head', '#crs_avail', '#crs_avail_tag')" onmouseout="toggle_filter('remove_blue', '#crs_avail_head', '#crs_avail', '#crs_avail_tag')">
+                        <div class="filter trans" id="crs_avail_head">
+                            <h4 style="float: left;" class="trans" id="crs_avail_tag">
+                                Course availability
+                            </h4>
+                            <a href="javascript: toggle_sub('#crs_avail', '#crs_avail_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="crs_avail">
+                            <div class="lesser">
+			        <div class="row" onclick="checkABox('#crs_avail_s_all', 'availability', 'all')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#crs_avail_s_all', 'availability', 'all')"></div>
+					    <input id="crs_avail_s_{{i.0}}" type="checkbox" checked="checked" />
+					</div>
+					<div style="width: 121px; float: left;">
+					    All
+					</div>
+					<div style="float: left;">
+					    ({{ count_courses }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>			
+				
+				{% for i in crs_avail_s %}
+				    <div class="row" onclick="checkABox('#crs_avail_s_{{i.0}}', 'availability', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#crs_avail_s_{{i.0}}', 'availability', '{{i.0}}')"></div>
+					    <input id="crs_avail_s_{{i.0}}" type="checkbox"/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.0}}
+					</div>
+					<div style="float: left;">
+					    ({{i.1}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    <!--
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#crs_lvl_head', '#crs_lvl', '#crs_lvl_tag')" onmouseout="toggle_filter('remove_blue', '#crs_lvl_head', '#crs_lvl', '#crs_lvl_tag')">
+                        <div class="filter trans" id="crs_lvl_head">
+                            <h4 style="float: left;" class="trans" id="crs_lvl_tag">
+                                Course level
+                            </h4>
+                            <a href="javascript: toggle_sub('#crs_lvl', '#crs_lvl_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="crs_lvl">
+                            <div class="lesser">
+				{# for i in crs_lvl_s #}
+				    <div class="row" onclick="checkABox('#crs_lvl_s_{{i.0}}', 'course_level', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#crs_lvl_s_{{i.0}}', 'course_level', '{{i.0}}')"></div>
+					    <input id="crs_lvl_s_{{i.0}}" type="checkbox" {% if i.0 == 'all' %} checked="checked" {% endif %}/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.1}}
+					</div>
+					<div style="float: left;">
+					    ({{i.2}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{# endfor #}
+                            </div>
+                        </div>
+                    </div>
+		    -->
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#language_head', '#language', '#language_tag')" onmouseout="toggle_filter('remove_blue', '#language_head', '#language', '#language_tag')">
+                        <div class="filter trans" id="language_head">
+                            <h4 style="float: left;" class="trans" id="language_tag">
+                                Languages
+                            </h4>
+                            <a href="javascript: toggle_sub('#language', '#language_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="language">
+                            <div class="lesser">
+                            
+                            <div class="row" onclick="checkABox('#languages_all', 'lang', 'all')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#languages_all', 'lang', 'all')"></div>
+					    <input id="languages_all" type="checkbox" checked="checked" />
+					</div>
+					<div style="width: 121px; float: left;">
+					    All
+					</div>
+					<div style="float: left;">
+					    ({{ count_courses }})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>
+                            
+                            				
+				{% for i in languages %}
+				    <div class="row" onclick="checkABox('#languages_{{i.0}}', 'lang', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#languages_{{i.0}}', 'lang', '{{i.0}}')"></div>
+					    <input id="languages_{{i.0}}" type="checkbox" />
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.0}}
+					</div>
+					<div style="float: left;">
+					    ({{i.1}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    <!--
+                    <div class="main_filter" onmouseover="toggle_filter('make_blue', '#other_head', '#other', '#other_tag')" onmouseout="toggle_filter('remove_blue', '#other_head', '#other', '#other_tag')">
+                        <div class="filter trans" id="other_head">
+                            <h4 style="float: left;" class="trans" id="other_tag">
+                                Other prefrences
+                            </h4>
+                            <a href="javascript: toggle_sub('#other', '#other_arrow');"><img style="width: 10px; height: 8px; margin: 8px 0 0 0; float: right;" src="{{STATIC_URL}}menu.png"/></a><div style="clear: both;"></div>
+                        </div>
+                        <div class="sub_filter trans" id="other">
+                            <div class="lesser">			
+				{# for i in others #}
+				    <div class="row" onclick="checkABox('#others_{{i.0}}', 'other', '{{i.0}}')">
+					<div style="width: 25px; float: left; position: relative; z-index: -1;">
+					    <div class="divhack" onclick="checkABox('#others_{{i.0}}', 'other', '{{i.0}}')"></div>
+					    <input id="others_{{i.0}}" type="checkbox" {% if i.0 == 'all' %} checked="checked" {% endif %}/>
+					</div>
+					<div style="width: 121px; float: left;">
+					    {{i.1}}
+					</div>
+					<div style="float: left;">
+					    ({{i.2}})
+					</div>
+					<div style="clear: both;"></div>
+				    </div>				    
+				{# endfor #}
+                            </div>
+                        </div>
+                    </div>
+                -->    
+                    
+                </div>
+            
+	    </div>
+        
+            <div class="main">            
+                <h4 style="float: left;">
+                    {{ courses|length }} courses found
+                </h4>
+                {% if courses|length != 0 %}
+                <div class="sorting">
+		    <style>
+			.gscale{
+			    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+			    filter: gray; /* IE6-9 */
+			    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */			    
+			}
+			.gscale:hover {
+			  filter: none;
+			  -webkit-filter: grayscale(0%);
+			}
+		    </style>
+                    <h4 style="float: left; margin: 0 13px 0 0; line-height: 28px;">Sort by </h4>
+		    <a onclick="makeBlue('relevancy')" style="float: left; margin: 0 4px;" href="javascript:"><img  id='relevancy' class="filter_img" src="{{STATIC_URL}}blue/relevancy.png"/></a>
+		    <a onclick="makeBlue('rating')" style="float: left; margin: 0 4px;" href="javascript:"><img  id='rating' class="filter_img gscale" src="{{STATIC_URL}}blue/star.png"/></a>
+                    <a onclick="makeBlue('addcount')" style="float: left; margin: 0 4px;" href="javascript:"><img  id='addcount' class="filter_img gscale" src="{{STATIC_URL}}blue/wallplus.png"/></a>
+                    <a onclick="makeBlue('date')" style="float: left; margin: 0 4px;" href="javascript:"><img  id='date' class="filter_img gscale" src="{{STATIC_URL}}blue/calendar.png"/></a>
+                    <a onclick="makeBlue('price')" style="float: left; margin: 0 4px;" href="javascript:"><img  id='price'class="filter_img gscale" src="{{STATIC_URL}}blue/price.png"/></a>
+                    <div style="clear: both;"></div>
+                </div>
+                {% endif %}
+                <div style="clear: both;"></div>
+                <div id="coursesss">
+		    {% for i in courses %}
+		    <div class="coursewall_course" onmouseover="toggle_left('show', '{{i.pk}}')" onmouseout="toggle_left('hide', '{{i.pk}}')">
+			<div class="coursewall_course_left" style="position: relative;">
+			    <!--all imges are of width 188px-->
+			    <a id='play_b_{{ i.pk }}' href="javascript: show_vid('{{ i.youtube_video }}');" class="play_b"><img style="float: left; height: 20px;" src="{{STATIC_URL}}icons/play.png"/></a>
+			    <div class="coursewall_course_price" style="position: absolute;">
+			    {% if i.cost == 0 %}
+				Free
+			    {% else %}
+				{{ i.cost }}
+			    {% endif %}
+			    </div>
+			    
+			    <div style="float: right; height: 45px;">
+				<img class="uni_img" src="{{ i.university.url_icon }}"/>
+			    </div>		
+			    <img style="cursor: pointer;" onclick="show_vid('{{ i.youtube_video}}')" src="{{ i.course_image }}" height="118" width="188"/>
+			</div>
+			<div class="coursewall_course_middle" id="course_left_div_{{i.pk}}">
+			    <h3 style="margin: auto auto auto 16px;" id="course_left_title_{{i.pk}}">{{ i.course_name }}</h3>
+			    {% if i.course_name|length > 41 %}
+			    <p class="course_short_desc" style="margin: 10px auto auto 16px;" id="course_left_text_{{i.pk}}">
+			       {% if i.short_description == '' %} {{ i.full_description|truncatewords:15 }} {% else %} {{ i.short_description|truncatewords:15  }} {% endif %}
+			    </p>
+			    {% else %}
+			    <p class="course_short_desc"style="margin: 10px auto auto 16px;" id="course_left_text_{{i.pk}}">
+			       {% if i.short_description == '' %} {{ i.full_description|truncatewords:32 }} {% else %} {{ i.short_description|truncatewords:32  }} {% endif %}
+			    </p>
+			    {% endif %}
+			    <!--<a id="course_left_add_1" class="img_btn add_to_coursewall" href="javascript:"><img src="{{STATIC_URL}}add_to_b.png"/></a>    -->
+			    <div class="absooo">
+				{% if not logged %}
+				<a id="course_left_add_{{i.pk}}" class="img_btn add_to_coursewall add_to_b"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}add_to_b.png"/>Add to CourseWall</a>
+				{% else %}
+				<a id="course_left_add_{{i.pk}}" class="img_btn add_to_coursewall add_to_b" href="javascript:add_to_course_wall({{ i.pk }});"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}add_to_b.png"/> Add to CourseWall</a>
+				{% endif %}
+				<!--<a id="course_left_detail_1" class="img_btn view_course_details" href="javascript:"><img src="{{STATIC_URL}}buttons/view_course_details.png"/></a>                    -->
+				<a id="course_left_detail_{{i.pk}}" class="img_btn view_course_details course_d" href="/course/{{ i.pk }}"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}view_d.png"/> View Course Details</a>
+			    </div>
+			</div>
+			<!--<div id="coursewall_course_right_{{i.pk}}" class="coursewall_course_right lesser" onmouseover="toggle_right('show', '{{i.pk}}')" onmouseout="toggle_right('hide', '{{i.pk}}')">-->
+			<div id="coursewall_course_right_{{i.pk}}" class="coursewall_course_right lesser">
+			    <img style="float: left;" src="{{STATIC_URL}}rating/{{ i.rating }}.png"/>({{ i.rating }})<br style="clear: both;"/>
+			    <div id="to_hide_{{i.pk}}">
+				<div style="margin: 10px 0 0 0;"><img style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/enrolled.png"/>{{ i.account_set.all|length }}</div><br/><br/><br/>
+			       
+			       
+			       
+				<div style="margin: 10px 0 0 0;"><img style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/calendar.png"/>                         
+				 {% if i.engine == 'COURSERA' %} 
+				{% if i.coursera_course.start_date != None %}{{ i.coursera_course.start_date }}{% else %}No idea{% endif %}
+			     {% elif i.engine == 'EDX' %}
+				{% if i.edx_course.start_date != None %}{{ i.edx_course.start_date }}{% else %}No idea{% endif %}
+			     {% else %}
+				No idea
+			    {% endif %}
+				<br style="clear: both;"/></div>
+				
+	   
+				
+				<div style="margin: 10px 0 0 0;"><img style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/clock.png"/>  
+				{% if i.engine == 'COURSERA' %} 
+				{% if i.coursera_course.work_load != None %}{{ i.coursera_course.work_load|truncatechars:20 }}{% else %}No idea{% endif %}
+			     {% elif i.engine == 'EDX' %}
+				{% if i.edx_course.work_load != None %}{{ i.edx_course.work_load|truncatechars:20 }}{% else %}No idea{% endif %}
+			     {% else %}
+				No idea
+			    {% endif %}
+				</div>
+			    </div>
+			    <div id="to_show_{{i.pk}}" style="display: none;">
+				{% if i.get_max_review != None %}
+				<div class="featured_course_best_review">
+				    <p>
+					{{ i.get_max_review.review|truncatechars:115 }}<a class="more" href="javascript:">more</a>
+				    </p>
+				    <img style="float: left;" src="{{ i.avatar }}"/> <div class="italic">{{ i.get_max_review.user.name }},  {{ i.get_max_review.agree }} votes</div>
+				</div>                           
+				{% else %}
+				    <div class="featured_course_best_review"> 
+					No one reviewed the course yet
+				    </div>
+				{% endif %}
+			    </div>
+			</div>
+			<div style="clear:both;"></div>
+		    </div>
+		    {% endfor %}
+		</div>
+            </div>
+        </div>
+        <script>
+            function toggle_sub(sub_id, arrow_id){
+                $(sub_id).toggle();
+                //toggle the visibility of the downward arrow
+            }
+            function toggle_filter(action, head_id, body_id, h4){                
+                if (action == 'make_blue'){ 
+                    $(head_id).css({
+                        'background':'#004e9b',
+                        'border': '1px solid #00274f'
+                        }); 
+                    $(h4).css('color', '#ffffff');                    
+                    $(body_id).css({
+                        'border-left':'1px solid #004e9b',
+                        'border-right':'1px solid #004e9b',
+                        'border-bottom':'1px solid #004e9b',
+                        });
+                }
+                else{
+                    $(head_id).css({
+                        'background':'#ffffff',
+                        'border': '1px solid #8cdaff'
+                        }); 
+                    $(h4).css('color', '#333333');                    
+                    $(body_id).css({
+                        'border-left':'1px solid #8cdaff',
+                        'border-right':'1px solid #8cdaff',
+                        'border-bottom':'1px solid #8cdaff',
+                        });                    
+                }
+            }
+            function toggle_right(action, course_id){
+                var course_right_div = '#coursewall_course_right_' + course_id
+                if (action == 'hide'){ 
+                    $('#to_show_'+course_id).hide();  
+                    $('#to_hide_'+course_id).show();
+                    $(course_right_div).css('background', '#ffffff'); 
+                }
+                else{
+                    $('#to_hide_'+course_id).hide();  
+                    $('#to_show_'+course_id).show();
+                    $(course_right_div).css('background', '#b7ffff');
+                }                
+            }
+            function toggle_left(action, course_id){
+                var course_left_div = '#course_left_div_' + course_id;
+                var course_left_add = '#course_left_add_' + course_id;
+                var course_left_detail = '#course_left_detail_' + course_id;
+                var course_left_text = '#course_left_text_' + course_id;
+                var course_left_title = '#course_left_title_' + course_id;
+		var course_left_play_b = '#play_b_' + course_id;
+                if (action == 'hide'){ 
+                    $(course_left_text).css('opacity', '0');
+                    $(course_left_div).css('background', '#ffffff');                    
+                    $(course_left_add).css('opacity', '0');
+                    $(course_left_detail).css('opacity', '0');
+                    $(course_left_play_b).css('opacity', '0');
+                    $(course_left_title).css('color', '#000000');
+                }
+                else{
+                    $(course_left_text).css('opacity', '1');
+                    $(course_left_div).css('background', '#b7ffff');                    
+                    $(course_left_add).css('opacity', '1');
+                    $(course_left_detail).css('opacity', '1');  
+                    $(course_left_play_b).css('opacity', '1');    
+                    $(course_left_title).css('color', '#004080');             
+                }
+            }
+        </script>
+    </body>
+</html>

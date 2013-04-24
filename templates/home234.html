@@ -1,0 +1,329 @@
+<html>
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="{{STATIC_URL}}jquery.bxslider.js"></script>
+        <link href="{{STATIC_URL}}jquery.bxslider.css" rel="stylesheet" />
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }            
+            *{
+                font-family: sans-serif;
+            }
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+            }
+            .header{
+                width: 100%;
+                height: 40px;
+                background: #004e9b;
+                /*padding: 0 20px;*/
+                color: #ffffff;
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .featured_course{
+                width: 188px;
+                border: 1px solid #8cdaff;
+                padding: 2px;
+            }
+            .featured_course_count{
+                float: left;
+            }
+            .featured_course_header{
+                border-bottom: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 540px;
+                padding: 5px;
+            }
+            .coursewall_course_right{
+                float: left;
+                width: 178px;
+                padding: 4px 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }            
+            .search{
+                width: 332px;
+                margin: 25px auto;
+                background: #fff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+            }
+            .signup_email, .signup_password{
+                margin: 10px 0;
+                width: 260px;
+                background: #fff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;                
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .searchButton {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+            }
+            .searchButton:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .searchButton:active {
+                position:relative;
+                top:1px;
+            }
+
+            .loginButton{
+                text-decoration: none;
+                color: #ffffff;
+                background: #004e9b;
+                font-size: 14px;
+                padding: 2px 5px 2px 5px;
+            }
+            .loginButton:hover{
+                background: #003f7d;
+            }
+            .username{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+            .password{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+            .login{
+                margin: 13px 10px 5px 10px;
+            }
+            .homepage_slogan{
+                width: 850px;
+                margin: 20px auto;
+                color: #333;
+            }
+            .homepage_video_container{
+                float: left;
+                /*width: 550px;*/
+                background: #4f4f4f;
+                /*height: 310px;*/
+                padding: 10px;
+                margin: 0 45px 0 0;
+            }
+            .signup{
+                float: left;
+                width: 540px;
+                background: #4f4f4f;
+                height: 298px;
+                padding: 10px;                
+            }
+            .inner_signup{
+                background: #ffffff;
+                height: 100%;
+                width: 100%;
+            }
+            .lesser{
+                font-size: 12px;
+                color: #333;
+            }
+            .inText_link{
+                color: #0080ff;
+            }
+            .courses{
+                width: 1062px;
+                margin: 0 auto 10px;
+            }
+            .homepage_course{
+                border: 2px solid #8f8f8f;
+                border-radius: 10px;
+                background: #F6F6F6;
+                width: 330px;
+                box-shadow: 0px 0px 15px #8a8a8a;
+                margin: 10px;
+                float: left;
+            }
+            .homepage_course_university{
+                width: 175px;
+                height: 80px;
+                margin: 0 auto;
+            }
+            .homepage_course_img_container{
+                background: #535340;
+                padding: 10px;
+                position: relative;
+            }
+            .homepage_course_info_left{
+                float: left;
+                padding: 7px;
+            }
+            .homepage_course_info_middle{
+                float: left;
+                padding: 7px;
+                width: 130px;
+                border-left: 2px solid #535340;
+                border-right: 2px solid #535340;
+            }
+            .homepage_course_info_right{
+                float: left;
+                padding: 7px;
+            }
+            .homepage_course_info{
+                border-bottom: 2px solid #535340;
+            }
+            .featured_course_best_review{
+                padding: 0 10px 10px 10px;
+            }
+            .inner_signup_left{
+                padding: 10px;
+                float: left;
+                width: 290px;
+                margin: 0 20px 0 0;
+            }
+            .inner_signup_right{
+                float: left;
+            }
+            .high_field{
+                height: 28px;
+            }
+            a img{
+                border: 0px;
+            }
+            .homepage_course_university_img{
+                margin: 10px 0;
+            }
+            .lesser_v{
+                font-size: 12px;
+                font-weight: 700;
+            }
+            #triangle-bottomleft {
+                width: 0;
+                height: 0;
+                border-bottom: 50px solid #c0c0c0;
+                border-right: 50px solid transparent;
+                float: left;
+            }
+            
+            #triangle-topleft {
+                width: 0;
+                height: 0;
+                border-top: 50px solid #c0c0c0;
+                border-right: 50px solid transparent;
+                float: left;
+            }
+            #rectangle {
+                width: 240px;
+                height: 80px;
+                background: #c0c0c0;
+                float: left;
+                line-height: 80px;
+                font-size: 18px;
+                font-weight: 700;
+                padding: 10px;
+            }
+            .as{
+                width: 310px;
+                position: absolute;
+                top: 20px;
+            }
+            .sign_up_for_free {
+                    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #98b879), color-stop(1, #496632) );
+                    background:-moz-linear-gradient( center top, #98b879 5%, #496632 100% );
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#98b879', endColorstr='#496632');
+                    background-color:#98b879;
+                    -moz-border-radius:8px;
+                    -webkit-border-radius:8px;
+                    border-radius:8px;
+                    border:1px solid #0e3d06;
+                    display:inline-block;
+                    color:#ffffff;
+                    font-family:arial;
+                    font-size:15px;
+                    font-weight:bold;
+                    padding:6px 76px;
+                    text-decoration:none;
+            }.sign_up_for_free:hover {
+                    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #496632), color-stop(1, #98b879) );
+                    background:-moz-linear-gradient( center top, #496632 5%, #98b879 100% );
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#496632', endColorstr='#98b879');
+                    background-color:#496632;
+            }.sign_up_for_free:active {
+                    position:relative;
+                    top:1px;
+            }
+.btn-auth {
+    font: 13px/1.333 "lucida grande", tahoma, sans-serif;
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    padding: 0 1em;
+    border: 1px solid #999;
+    border-radius: 2px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    w

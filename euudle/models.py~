@@ -1,0 +1,133 @@
+
+from django.db import models
+import datetime
+from django.db import models
+from django_facebook.models import FacebookProfileModel
+from django_facebook.models import get_user_model
+
+ENGINE = (
+    ( 'COURSERA' , 'COURSERA' ),
+    ( 'EDX' , 'EDX' ),
+    ( 'UDACITY' , 'UDACITY' ),
+)
+
+
+#                           Shared Properties
+##############################################################################     
+############################################################################## 
+##############################################################################
+
+class common_university(models.Model):
+    name = models.CharField(max_length=250,null=True,blank=True)
+    home_link = models.URLField(null=True,blank=True)
+    url_icon = models.URLField(null=True,blank=True)
+    engine = models.CharField(max_length=50,choices=ENGINE)
+    last_update = models.DateField(default=datetime.datetime.today())
+    uni_id = models.IntegerField(null=True,blank=True)
+    short_name = models.CharField(max_length=250,null=True,blank=True)
+    description = models.TextField(null=True,blank=True)
+    
+class BaseInstructor(models.Model):
+    name = models.CharField(max_length=250)
+    image = models.URLField(null=True,blank=True)
+    title = models.CharField(max_length=250,null=True,blank=True)
+    description = models.TextField(null=True,blank=True)
+    last_update = models.DateField(default=datetime.datetime.today())
+    inst_id = models.IntegerField(null=True,blank=True)
+    short_name = models.CharField(max_length=50,null=True,blank=True)
+    engine = models.CharField(max_length=50,choices=ENGINE)
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+
+class BaseCourse(models.Model):
+    course_id = models.CharField(max_length=20,blank=True,null=True)
+    course_name = models.CharField(max_length=250,blank=True,null=True)
+    course_image = models.URLField(blank=True,null=True)
+    link = models.URLField()
+    rating = models.IntegerField(default=0)
+    clicks = models.IntegerField(default=0)
+    last_update = models.DateField(default=datetime.datetime.today())
+    short_description = models.TextField(blank=True,null=True)
+    full_description = models.TextField(blank=True,null=True)
+    instructors = models.ManyToManyField(BaseInstructor)
+    youtube_video = models.URLField(blank=True,null=True)
+    university = models.ForeignKey(common_university,null=True,blank=True)
+    engine = models.CharField(max_length=50,choices=ENGINE)    
+    
+    def __unicode__(self):
+        return u'%s' % self.course_name
+  
+
+##############################################################################      
+#################################UDACITY######################################  
+##############################################################################
+
+class udacity_course(models.Model):
+    course = models.OneToOneField(BaseCourse)
+    course_sub_name =  models.CharField(max_length=250)
+    category = models.CharField(max_length=250,null=True,blank=True)
+    difficulty = models.CharField(max_length=100,null=True,blank=True)
+    outcome = models.TextField(null=True,blank=True)
+    full_prerequistes = models.TextField(null=True,blank=True)
+    more_details = models.TextField(null=True,blank=True)
+    cost = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return u'%s - %s' % ( self.course.course_id , self.course.course_name )
+    
+
+##############################################################################      
+################################COURSERA######################################  
+##############################################################################    
+    
+class coursera_category(models.Model):
+    category_id = models.IntegerField(unique=True)
+    category_name = models.CharField(max_length=250)
+    last_update = models.DateField(default=datetime.datetime.today())
+    
+    def __unicode__(self):
+        return u'%s' % self.category_name
+        
+    class META:
+        verbose_name_plural = 'coursera_categories'
+
+        
+class coursera_course(models.Model):
+    course = models.OneToOneField(BaseCourse)
+    course_icon = models.URLField(null=True,blank=True)
+    language = models.CharField(max_length=30)
+    categories = models.ManyToManyField(coursera_category)
+    start_date = models.DateField(null=True,blank=True)
+    duration = models.CharField(max_length=50,null=True,blank=True)
+    work_load = models.CharField(max_length=200,null=True,blank=True)
+    cost = models.IntegerField(default=0)
+    ####################################
+    
+    def __unicode__(self):
+        return u'%s' % self.course.course_name
+
+##############################################################################      
+#####################################EDX######################################  
+############################################################################## 
+
+class edx_course(models.Model):
+    course = models.OneToOneField(BaseCourse)
+    instructors = models.ManyToManyField(edx_instructor)
+    start_date = models.DateField(null=True,blank=True)
+    end_date = models.DateField(null=True,blank=True)
+    short_prerequistes = models.CharField(max_length=200,null=True,blank=True)
+    full_prerequistes = models.TextField(null=True,blank=True)
+    work_load = models.CharField(max_length=200,null=True,blank=True)
+    cost = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return u'%s - %s' % ( self.course.course_id , self.course.course_name)
+
+
+############################################################################################################################################################       
+#######################################################################GENERAL#API##########################################################################  
+############################################################################################################################################################
+
+

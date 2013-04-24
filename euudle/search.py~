@@ -1,0 +1,101 @@
+import re
+from euudle.models import *
+from django.db.models import Q
+
+def transformQuery(x):
+    weDict = {}
+    price = []
+    university = []
+    rating = []
+    subject = []
+    availability = []
+    course_level = []
+    lang = []
+    other = []
+    listOfStrings = []
+    listOfStrings.append(x[7:])
+    for i in range(len(x)):
+        if x[i] == '&':
+            listOfStrings.append(x[i + 1:])
+    newL = [r[:r.find('""')].split('="') for r in listOfStrings]
+    for s in newL:
+        if s[0] == 'pricerange':
+            weDict['pricerange'] = s[1]
+        elif s[0] == 'price':
+            price.append(s[1])
+        elif s[0] == 'university':
+            university.append(s[1])
+        elif s[0] == 'rating':
+            rating.append(s[1])
+        elif s[0] == 'subject':
+            subject.append(s[1])
+        elif s[0] == 'availability':
+            availability.append(s[1])
+        elif s[0] == 'course_level':
+            course_level.append(s[1])
+        elif s[0] == 'lang':
+            lang.append(s[1])
+        elif s[0] == 'other':
+            other.append(s[1])
+    
+    if price:
+        weDict['prices'] = price
+    if university:
+        weDict['university'] = university
+    if rating:
+        weDict['rating'] = rating
+    if subject:
+        weDict['subject'] = subject
+    if availability:
+        weDict['availability'] = availability
+    if course_level:
+        weDict['course_level'] = course_level
+    if lang:
+        weDict['lang'] = lang
+    if other:
+        weDict['other'] = other
+    return weDict
+
+
+class RapidSearch(object):
+    
+    def term(self, name, base):
+    
+        if base != None:
+            return base.filter( Q(course_name__search=name) | Q(full_description__icontains=name) | Q(short_description__icontains=name) )
+            
+        return BaseCourse.objects.filter( Q(course_name__search=name) | Q(full_description__icontains=name) | Q(short_description__icontains=name) )
+  
+        
+        
+    def price(self, name, base):
+        st = name.split(';')
+        if base != None: 
+            return base.filter(cost__gte=st[0]).filter(cost__lte=st[1] )
+        
+        return BaseCourse.objects.filter(cost__gte=st[0]).filter(cost__lte=st[1] )
+        
+    def university(self, name, base):
+        base = base.exclude(engine='UDACITY')
+        result = base.filter(engine='EDX').filter(university__name__icontains=base)
+        return result.append( base.filter(engine='COURSERA').filter(university__name__icontains=base ) )
+        
+    #def subject(self, name, base):
+        
+        
+    
+def categorize_search(string):
+    filters = [ 'term' , 'price' , 'university', 'rating', 'subject', 'availability' , 'duration' , 'level' , 'lang' , 'other' ]
+    c = {}
+    for i in filters:
+        start = string.find(i)
+        if start != -1:
+            end = string.find('&',start+1)
+            true_end =  string.find('&',end+1)
+            if re.search('=',true_end):
+                c[i] = string[start+len(i):end]
+            else:
+                c[i] = string[start+len(i):true_end]                
+    return c
+        
+    

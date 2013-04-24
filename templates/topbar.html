@@ -1,0 +1,269 @@
+<style>
+    .searchButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+	background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+	background-color:#f5f5f5;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #666666;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow: 0 1px 1px #ffffff;
+	cursor: pointer;
+    }
+    .searchButton:hover {
+	background:#f5f5f5;
+    }
+    .searchButton:active {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9f9f9f), color-stop(1, #f5f5f5) );
+	background:-moz-linear-gradient( center top, #9f9f9f 5%, #f5f5f5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9f9f9f', endColorstr='#f5f5f5');
+	background-color:#f5f5f5;
+    }
+
+    .header{
+	width: 100%;
+	height: 52px;
+	color: #ffffff;
+background: #73c0f4; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzczYzBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YTgwZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #73c0f4 0%, #4a80d3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73c0f4), color-stop(100%,#4a80d3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #73c0f4 0%,#4a80d3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73c0f4', endColorstr='#4a80d3',GradientType=0 ); /* IE6-8 */
+position: fixed; z-index: 9999;
+
+    }     
+    .search{
+	margin: 6px 0 0 94px;
+	background: #ffffff;
+	border: #727272 2px solid;
+	padding: 2px;
+	border-radius: 7px;
+	float: left;
+    }
+    .search:hover{
+	box-shadow: 0px 0px 10px #ffffff; 
+    }
+    .search_field{
+	border: 0px;
+	width: 300px;
+    }
+    .coursewall{
+	margin: 0 0 0 70px;
+	padding: 16px 10px 11px 10px;
+	font-size: 20px;
+	font-weight: 700;
+	/*background: #003366;*/
+	cursor: pointer;
+    }
+    .coursewall:hover{
+	background: #005bb7;
+	
+    }
+    .profile_menu{
+	margin: 6px 0 0 0;
+	padding: 10px 10px 5px 10px;
+	font-size: 20px;
+	font-weight: 700;         
+    }
+    .logo_anch{
+	color: #ffffff;
+	text-decoration: none;
+    }
+    .high_field{
+	height: 28px;
+    }
+    .dropdown{
+	position: fixed; z-index: 9999;
+	background: #f2f2f2;
+	left: 50%;
+	top: 52px;
+	margin: 0 0 0 449px;
+	z-index: 9999;
+	display: none;
+	border-bottom: 2px solid #bcbcbc;
+	width: 125px;
+    }
+    .dropdown2{
+	position: fixed; z-index: 9999;
+	background: #f2f2f2;
+	left: 50%;
+	top: 52px;
+	margin: 0 0 0 349px;
+	z-index: 9999;
+	display: none;
+	border: 1px solid #bcbcbc;
+	border-bottom: 2px solid #bcbcbc;
+	border-top: 0px;
+	width: 225px;
+	color: #333;
+	box-shadow: 0px 0px 18px #8a8a8a; 
+    }
+    .daaa{
+	color: #333;
+	text-decoration: none;
+	padding: 10px;
+	margin: 0 0 2px 0;
+	float: left;
+	clear: both;
+	width: 105px;
+    }
+    .daaa:hover{
+	color: #fff;
+	background: #333;
+	margin: 0 0 0 0;
+	border-bottom: 2px solid #d8d8d8;
+    }
+    .loginButton{
+	color: #fff;
+	text-decoration: none;
+    }
+    .loginButton:hover{
+	color: #e1e1ff;
+    }
+    .loginButton{
+	text-decoration: none;
+	color: #ffffff;
+	/*background: #004e9b;*/
+	font-size: 18px;
+	padding: 2px 5px 2px 5px;
+	color: #f8f8f8;
+    }
+    .loginButton:hover{
+	color: #ebebeb;
+    }
+    .username{
+	margin: 0;
+	padding: 10px 10px 5px 10px;
+    }
+    .password{
+	margin: 0;
+	padding: 10px 10px 5px 10px;
+    }
+    .shiftup{
+	margin: 0px auto 0;
+    }
+    .notification{
+	background: #ff0000;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 10px;
+	position: absolute;
+	top: 10px;
+	left: 28px;
+	padding: 2px 4px;
+    }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .high_field{
+                height: 28px;
+            }
+</style>
+<script>
+    function toogleDropp(){
+	$('#droppaya').toggle();
+	console.log('called!');
+    }
+    $(document).mouseup(function (e)
+    {
+	var container = $('#droppaya');
+    
+	if (container.has(e.target).length === 0)
+	{
+	    container.hide();
+	}
+    });
+    function toogleDropp2(){
+	$('#droppaya2').toggle();
+	console.log('called!');
+    }
+    $(document).mouseup(function (e)
+    {
+	var container = $('#droppaya2');
+    
+	if (container.has(e.target).length === 0)
+	{
+	    container.hide();
+	}
+    });
+    function submitaform(id){
+	$(id).submit();
+    }
+</script>
+<div class="header">
+    <div class="wrapper shiftup">
+	{% if not logged %}
+	<div id="droppaya2" class="dropdown2">
+	    <form id="signin" method="POST" action="/login" >
+		<div style="float: right;" class="username lesser">
+		    Email <input class="search_field high_field" style="width: 205px; margin: 3px 0 0 0;" name="email" type="text"/>
+		</div>
+		<div style="float: right;" class="password lesser">
+		    Password <input class="search_field high_field" style="width: 205px; margin: 0 0 0 0;" name="password" type="password"/>
+		</div>
+		<div style="clear: both;"></div>
+		<!--<a  class="searchButton" style="float: right; margin: 6px;" href="javascript: submitaform('#signin');">Login</a>-->
+		<input type="submit" value="Login" class="searchButton" style="margin: 6px;"/>
+	    </form>
+	</div>
+	{% else %}	
+	<div id="droppaya" class="dropdown">
+	    <form id="signin" method="POST" action="/login">
+		<a class="daaa" href="/profile">
+		    Edit profile
+		</a>
+		<a class="daaa" href="/logout">
+		    Logout
+		</a>
+		<div style="clear: both;"></div>
+	    </form>
+	</div>
+	{% endif %}
+	<div style="float: left; margin: 5px 0 0 0;" class="logo">
+	    <h1>
+		<a class="logo_anch" href="/">eduudle</a>
+	    </h1>
+	</div>
+	<form method="get" action="/search">
+	    <div class="search">
+		<img style="margin: 6px 5px 0 5px; height: 18px; width: 18px; float: left;" src="{{STATIC_URL}}icons/search.png"/>
+		<input class="search_field high_field" style="margin: 3px 0 0 0; width: 260px; float: left; outline: none; font-size: 18px; color: #333;" type="text" name="term" value="{{term}}"/>
+		<input type="submit" class="searchButton" value="Search"></input>
+		<!--<a href="/search"><img src="{{STATIC_URL}}buttons/search.png"/></a>-->
+	    </div>
+	</form>
+	{% if not logged %}		
+		<a onmouseover="toogleDropp2()" style="margin: 10px 0 0 0; float: right;" class="loginButton" href="javascript: toogleDropp2();">Login</a>
+	{% else %}
+	<div style="float: right;">
+	    <div style="float: left; position: relative;" onclick="location.href='/coursewall'" title="courses added by you" class="coursewall">
+		<img style="margin: 3px 4px 0 0; float: left;" src="{{STATIC_URL}}icons/coursewall.png"/></a>
+		<span style="float: left;">CourseWall</span>
+		<div style="display: none;" class="notification">1</div>
+	    </div>
+	    <div style="float: left;" class="profile_menu" onclick="toogleDropp()">
+		<img style="float: left; margin: 0 4px 0 0;" width="30px" height="25px" src="{{ logged.avatar.url }}"/> <span style="float: left; cursor: pointer;">{{ logged.name }}</span> <img style="width: 10px; height: 8px; margin: 9px 0 0 10px; cursor: pointer;" src="{{STATIC_URL}}menu.png"/>
+	    </div>
+	</div>	
+	{% endif %}
+    </div>
+</div>
+<div style="clear: both; height: 60px;"></div>

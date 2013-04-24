@@ -1,0 +1,386 @@
+<html>
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }            
+            *{
+                font-family: sans-serif;
+            }
+.go_to_class {
+	-moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+	background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+	background-color:#3d94f6;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #1570cd;
+        float: left;
+        margin: 15px 10px 10px 0;
+}.go_to_class:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6) );
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background-color:#1e62d0;
+}.go_to_class:active {
+	position:relative;
+	top:1px;
+}
+.review_button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #a4e271;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #a4e271;
+	box-shadow:inset 0px 1px 0px 0px #a4e271;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #89c403), color-stop(1, #77a809) );
+	background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+	background-color:#89c403;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #74b807;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #1570cd;
+        float: left;
+        margin: 15px 10px 10px 10px;
+}.review_button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77a809), color-stop(1, #89c403) );
+	background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+	background-color:#77a809;
+}.review_button:active {
+	position:relative;
+	top:1px;
+}
+
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .featured_course{
+                width: 188px;
+                border: 1px solid #8cdaff;
+                padding: 2px;
+            }
+            .featured_course_count{
+                float: left;
+            }
+            .featured_course_header{
+                border-bottom: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .high_field{
+                height: 28px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 540px;
+                padding: 5px 0 0 10px;
+            }
+            .coursewall_course_right{
+                float: left;
+                width: 178px;
+                padding: 4px 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }
+            .coursewall{
+                margin: 0 0 0 70px;
+                padding: 14px 10px 13px 10px;
+                font-size: 20px;
+                font-weight: 700;
+		background: #4a80d3;
+
+            }
+            .profile_menu{
+                margin: 4px 0 0 0;
+                padding: 10px 10px 5px 10px;
+                font-size: 20px;
+                font-weight: 700;         
+            }
+            .logo_anch{
+                color: #ffffff;
+                text-decoration: none;
+            }
+            .coursewall_course_price{
+                background: url('{{STATIC_URL}}price_background.png');
+                color: #ffffff;
+                float: left;
+                width: 54px;
+                height: 20px;
+                margin: 1px 0 3px -3px;
+                padding: 7px;
+                font-weight: 700;
+            }
+            .clr{
+                clear: both;
+            
+            }
+            .featured_course_rating{
+                float: right;
+            }
+            .featured_course_best_review{
+                font-size: 12px;
+                font-weight: 300;
+            }
+            .course_d {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:12px;
+                font-weight:700;
+                padding: 6px;
+                text-decoration:none;
+                margin: 10px;
+            }
+            .course_d:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .course_d:active {
+                position:relative;
+                top:1px;
+            }  
+            .searchButton {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+		margin: 0;
+		float: right;
+            }
+            .searchButton:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .searchButton:active {
+                position:relative;
+                top:1px;
+            }
+            .search{
+                margin: 6px 0 0 115px;
+                background: #ffffff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+                float: left;
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .header{
+                width: 100%;
+                height: 52px;
+                color: #ffffff;
+background: #73c0f4; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzczYzBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YTgwZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #73c0f4 0%, #4a80d3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73c0f4), color-stop(100%,#4a80d3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #73c0f4 0%,#4a80d3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73c0f4', endColorstr='#4a80d3',GradientType=0 ); /* IE6-8 */
+   
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="wrapper">
+                <div style="float: left; margin: 5px 0 0 0;" class="logo">
+                    <h1>
+                        <a class="logo_anch" href="/">eduudle</a>
+                    </h1>
+                </div>
+            <form method="get" action="/search">
+            <div class="search">
+                <img style="margin: 5px 2px; height: 18px; width: 18px; float: left;" src="{{STATIC_URL}}icons/search.png"/>
+                <input class="search_field high_field" name="term" style="width: 210px; float: left;" type="text"/>
+                <a class="searchButton" href="/search">Search</a>
+                <!--<a href="/search"><img src="{{STATIC_URL}}buttons/search.png"/></a>                -->
+            </div>
+            </form>
+            </form>
+                <div style="float: left;" class="coursewall">
+                    <img style="margin: 3px 4px 0 0; float: left;" src="{{STATIC_URL}}icons/coursewall.png"/>
+                    <span style="float: left;">CourseWall</span>
+                </div>
+                <div style="float: left;" class="profile_menu">
+                    <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <span style="float: left;">{{ acc.name }}</span> <img style="width: 10px; height: 8px; margin: 9px 0 0 10px;" src="{{STATIC_URL}}menu.png"/>
+                </div>
+            </div>
+        </div>
+	
+	
+        <div style="clear: both;"></div>
+        <div class="wrapper">
+            <div class="lefty">
+                <h4>
+                    Featured Courses
+                </h4>
+                <div class="featured_course">
+                    <div class="featured_course_header">
+                        <div class="coursewall_course_price" style="margin-left: -7px;">Free</div>
+                        <img style="width: 100px; float: right;" src="{{STATIC_URL}}harvardLarge.png"/>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="featured_course_title">
+                        Introduction to Psychology
+                    </div>
+                    <div class="featured_course_detail">
+                        <img style="margin: 0 0 5px 0;" src="{{STATIC_URL}}course_images/1.png"/>
+                        <div style="clear: both;"></div>
+                        <div class="featured_course_count">
+                            <img style="float: left;" src="{{STATIC_URL}}icons/enrolled.png"/> 244
+                        </div>
+                        <div class="featured_course_rating">
+                            <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(23)
+                        </div>
+                        <div class="clr"></div>
+                        <div class="featured_course_best_review">
+                            <p>
+                                The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                            </p>
+                            <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <div class="italic">Ahmed Samy, 12 votes</div>
+                        </div>
+                        <div class="clr"></div>
+                        <a id="course_left_detail_1" class="img_btn view_course_details course_d" href="javascript:"><img style="height: 15px; float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}view_d.png"/> View Course Details</a> 
+                    </div>
+                </div>
+            </div>
+        
+            <div class="main">            
+                <h4>
+                    Following {{ acc.courses.all|length }} courses
+                </h4>
+                
+                {% for i in acc.courses.all %}
+                
+                <div class="coursewall_course">
+                    <div class="coursewall_course_left">
+                        <!--all imges are of width 188px-->                    
+                        <div style="width: 100px; margin: 0 auto;"><img style="width: 100px;" src="{{ i.university.url_icon }}"/>                    </div>
+                        <img src="{{ i.course_image }}"/>
+                    </div>
+                    <div class="coursewall_course_middle">
+                        <h3>{{ i.course_name }}</h3>
+                        
+                        {% for g in i.instructors.all %}
+                        
+                        <span style="float: left; line-height: 20px; margin: 0 10px 0 0;">by {{ g.name }}</span>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_home.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_tw.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_in.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_fb.png"/></a>
+                        <br/>
+                        
+                        {% endfor %}
+                        
+                        <a class="img_btn go_to_class" href="{{ i.link }}"><img style="float: left; margin: 0 10px 0 0; width: 30px;" src="{{STATIC_URL}}icons/go_arrow.png"/> Go to Class</a>    
+                        <a class="img_btn review_button" href="javascript:"><img style="float: left; margin: 0 10px 0 0; height: 19px;" src="{{STATIC_URL}}icons/review.png"/> Write A Review</a>
+                        
+                    </div>
+                    <div class="coursewall_course_right">
+                        <img style="float: left; margin: 2px 10px 0 0;" src="{{STATIC_URL}}icons/calendar.png"/> 03 April 2013 <br style="clear: both;"/><br/><br/><br/><br/><br style="clear: both;"/>
+                        <img style="float: left;" src="{{STATIC_URL}}icons/drop.png"/> <a class="drop_course" href="javascript:">Drop from CourseWall</a>                    
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                
+                {% endfor %}
+                
+            </div>
+        </div>
+    </body>
+</html>

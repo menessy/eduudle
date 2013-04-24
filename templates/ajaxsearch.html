@@ -1,0 +1,106 @@
+{% for i in courses %}
+<div class="coursewall_course" onmouseover="toggle_left('show', '{{i.pk}}')" onmouseout="toggle_left('hide', '{{i.pk}}')">
+    <div class="coursewall_course_left" style="position: relative;">
+	<!--all imges are of width 188px-->
+	{% if i.youtube_video %}<a id='play_b_{{ i.pk }}' href="javascript:show_vid('{{ i.youtube_video }}?autoplay=1');" class="play_b"><span style="float: left;margin: 2px 6px 0 6px; font-weight: 100;text-shadow: 0px 1px 1px #ffffff;">Watch Intro Video </span><img style="float: right; height: 20px;" src="{{STATIC_URL}}icons/play.png"/></a>{% endif %}
+	<div class="coursewall_course_price" style="position: absolute; text-shadow: 0px 1px 1px #000000;">
+	{% if i.cost == 0 %}
+	    Free
+	{% else %}
+	    {{ i.cost }}
+	{% endif %}
+	</div>
+	
+	{% if i.youtube_video %}<img style="position: absolute; left: 6px; bottom: 6px; box-shadow: 0px 0px 2px #ffffff;" src="{{ STATIC_URL }}video_flag.png"/>{% endif %}
+	
+	<div style="float: right; height: 45px;">
+	    <img class="uni_img" src="{{ i.university.url_icon }}"/>
+	</div>		
+	<img style="cursor: pointer;" onclick="show_vid('{{ i.youtube_video}}')" src="{{ i.course_image }}" height="118" width="188"/>
+    </div>
+    <div class="coursewall_course_middle" onclick="go2To('/course/{{ i.pk }}')" id="course_left_div_{{i.pk}}">
+	<h3 style="margin: auto auto auto 16px;" id="course_left_title_{{i.pk}}">{{ i.course_name }}</h3>
+	{% if i.course_name|length > 50 %}
+	<p class="course_short_desc" style="margin: 10px auto auto 16px;" id="course_left_text_{{i.pk}}">
+	   {% if i.short_description == '' %} {{ i.full_description|truncatechars:230 }}{% if i.full_description|length > 203%}<a class="more" href="/course/{{ i.pk }}">read more</a>{% endif %} {% else %} {{ i.short_description|truncatechars:203  }} {% if i.short_description|length > 203%}<a class="more" href="/course/{{ i.pk }}">read more</a>{% endif %}{% endif %}
+	</p>
+	{% else %}
+	<p class="course_short_desc"style="margin: 10px auto auto 16px;" id="course_left_text_{{i.pk}}">
+	   {% if i.short_description == '' %}  {{ i.full_description|truncatechars:295 }} {% if i.full_description|length > 295%}<a class="more" href="/course/{{ i.pk }}">read more</a>{% endif %} {% else %} {{ i.short_description|truncatechars:295  }}{% if i.short_description|length > 295%}<a class="more" href="/course/{{ i.pk }}">read more</a>{% endif %} {% endif %}
+	</p>
+	{% endif %}
+	<!--<a id="course_left_add_1" class="img_btn add_to_coursewall" href="javascript:"><img src="{{STATIC_URL}}add_to_b.png"/></a>    -->
+	<div class="absooo">
+	    {% if not logged %}
+	    <a id="course_left_add_{{i.pk}}" class="img_btn sign_up_for_free"  href="javascript:showUp();"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}add_to_b.png"/>Add to CourseWall</a>
+	    {% else %}
+	    <a id="course_left_add_{{i.pk}}" class="img_btn sign_up_for_free" href="javascript:add_to_course_wall({{ i.pk }});"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}add_to_b.png"/> Add to CourseWall</a>
+	    {% endif %}
+	    <!--<a id="course_left_detail_1" class="img_btn view_course_details" href="javascript:"><img src="{{STATIC_URL}}buttons/view_course_details.png"/></a>                    -->
+	    <a style="padding: 6px;" id="course_left_detail_{{i.pk}}" class="img_btn view_course_details searchButton" href="/course/{{ i.pk }}"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}view_d.png"/> View Course Details</a>
+	</div>
+    </div>
+    <!--<div id="coursewall_course_right_{{i.pk}}" class="coursewall_course_right lesser" onmouseover="toggle_right('show', '{{i.pk}}')" onmouseout="toggle_right('hide', '{{i.pk}}')">-->
+    <div id="coursewall_course_right_{{i.pk}}" class="coursewall_course_right lesser">
+	<!--<img style="float: left;" src="{{STATIC_URL}}rating/{{ i.rating }}.png"/>({{ i.rating }})<br style="clear: both;"/>-->
+	<!-- Add this element exactly where you want the Rating-Widget to appear -->
+	
+	<div id="rating2" onclick="javascript: update_rating('{{ i.pk }}');"><div class="rw-ui-container rw-urid-{{i.pk}}"></div></div>
+
+	<!--
+	    You can add more Rating-Widgets in your site,
+	    just pick some new rating-widget-unique-id (must be positive integer).
+	    For example (rating-widget-unique-id = 38):
+	    <div class="rw-ui-container rw-urid-38"></div>
+	-->
+
+	<!-- Add this javascript code immediately before the </body> tag -->
+       
+	
+	
+	
+	<div id="to_hide_{{i.pk}}">
+	    <div style="margin: 10px 0 0 0;"><img  title="Number of interested" style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/enrolled.png"/>{{ i.account_set.all|length }}</div><br/><br/>
+	   
+	   
+	   
+	    <div style="margin: 10px 0 0 0;"><img  title="Start date" style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/calendar.png"/>                         
+	     {% if i.engine == 'COURSERA' %} 
+	    {% if i.start_date != 'None' and i.start_date != None  %}{{ i.start_date }}{% else %}To be Announced{% endif %}
+	 {% elif i.engine == 'EDX' %}
+	    {% if i.start_date != 'None' and i.start_date != None  %}{{ i.start_date }}{% else %}To be Announced{% endif %}
+	 {% else %}
+	    Self-Paced
+	{% endif %}
+	    <br style="clear: both;"/></div>
+	    
+
+	    
+	    <div style="margin: 10px 0 0 0;"><img title="workload & duration" style="float: left; margin: 0 10px 0 5px;" src="{{STATIC_URL}}icons/clock.png"/>  
+	    {% if i.engine == 'COURSERA' %} 
+	    {% if i.coursera_course.work_load != None %}{{ i.coursera_course.work_load|truncatechars:20 }}{% else %}No idea{% endif %}
+	 {% elif i.engine == 'EDX' %}
+	    {% if i.edx_course.work_load != None %}{{ i.edx_course.work_load|truncatechars:20 }}{% else %}No idea{% endif %}
+	 {% else %}
+	    No idea
+	{% endif %}
+	    </div>
+	</div>
+	<div id="to_show_{{i.pk}}" style="display: none;">
+	    {% if i.get_max_review != None %}
+	    <div class="featured_course_best_review">
+		<p>
+		    {{ i.get_max_review.review|truncatechars:115 }}<a class="more" href="javascript:">more</a>
+		</p>
+		<img style="float: left;" src="{{ i.avatar }}"/> <div class="italic">{{ i.get_max_review.user.name }},  {{ i.get_max_review.agree }} votes</div>
+	    </div>                           
+	    {% else %}
+		<div class="featured_course_best_review"> 
+		    No one reviewed the course yet
+		</div>
+	    {% endif %}
+	</div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{% endfor %}

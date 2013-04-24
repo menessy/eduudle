@@ -1,0 +1,634 @@
+<html>
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
+        <link href="http://bxslider.com/lib/jquery.bxslider.css" rel="stylesheet" />
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }            
+            *{
+                font-family: sans-serif;
+            }
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+            }
+            .header{
+                width: 100%;
+                height: 40px;
+                background: #004e9b;
+                /*padding: 0 20px;*/
+                color: #ffffff;
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .featured_course{
+                width: 188px;
+                border: 1px solid #8cdaff;
+                padding: 2px;
+            }
+            .featured_course_count{
+                float: left;
+            }
+            .featured_course_header{
+                border-bottom: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 540px;
+                padding: 5px;
+            }
+            .coursewall_course_right{
+                float: left;
+                width: 178px;
+                padding: 4px 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }            
+            .search{
+                width: 332px;
+                margin: 25px auto;
+                background: #fff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+            }
+            .signup_email, .signup_password{
+                margin: 10px 0;
+                width: 260px;
+                background: #fff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;                
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .searchButton{
+                text-decoration: none;
+                color: #2a2a2a;
+                background: #c0c0c0;
+                font-size: 14px;
+                padding: 3px 5px 2px 5px;
+                border-radius: 7px;
+            }
+            .searchButton:hover{
+                background: #e9e9e9;
+            }
+            .loginButton{
+                text-decoration: none;
+                color: #ffffff;
+                background: #004e9b;
+                font-size: 14px;
+                padding: 2px 5px 2px 5px;
+            }
+            .loginButton:hover{
+                background: #003f7d;
+            }
+            .username{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+            .password{
+                margin: 0;
+                padding: 10px 10px 5px 10px;
+            }
+            .login{
+                margin: 13px 10px 5px 10px;
+            }
+            .homepage_slogan{
+                width: 850px;
+                margin: 20px auto;
+                color: #333;
+            }
+            .homepage_video_container{
+                float: left;
+                /*width: 550px;*/
+                background: #4f4f4f;
+                /*height: 310px;*/
+                padding: 10px;
+                margin: 0 45px 0 0;
+            }
+            .signup{
+                float: left;
+                width: 540px;
+                background: #4f4f4f;
+                height: 298px;
+                padding: 10px;                
+            }
+            .inner_signup{
+                background: #ffffff;
+                height: 100%;
+                width: 100%;
+            }
+            .lesser{
+                font-size: 12px;
+                color: #333;
+            }
+            .inText_link{
+                color: #0080ff;
+            }
+            .courses{
+                width: 1062px;
+                margin: 0 auto 10px;
+            }
+            .homepage_course{
+                border: 2px solid #8f8f8f;
+                border-radius: 10px;
+                background: #F6F6F6;
+                width: 330px;
+                box-shadow: 0px 0px 15px #8a8a8a;
+                margin: 10px;
+                float: left;
+            }
+            .homepage_course_university{
+                width: 175px;
+                height: 80px;
+                margin: 0 auto;
+            }
+            .homepage_course_img_container{
+                background: #535340;
+                padding: 10px;
+                position: relative;
+            }
+            .homepage_course_info_left{
+                float: left;
+                padding: 7px;
+            }
+            .homepage_course_info_middle{
+                float: left;
+                padding: 7px;
+                width: 130px;
+                border-left: 2px solid #535340;
+                border-right: 2px solid #535340;
+            }
+            .homepage_course_info_right{
+                float: left;
+                padding: 7px;
+            }
+            .homepage_course_info{
+                border-bottom: 2px solid #535340;
+            }
+            .featured_course_best_review{
+                padding: 0 10px 10px 10px;
+            }
+            .inner_signup_left{
+                padding: 10px;
+                float: left;
+                width: 290px;
+                margin: 0 20px 0 0;
+            }
+            .inner_signup_right{
+                float: left;
+            }
+            .high_field{
+                height: 28px;
+            }
+            .homepage_course_university_img{
+                margin: 10px 0;
+            }
+            .lesser_v{
+                font-size: 12px;
+                font-weight: 700;
+            }
+            #triangle-bottomleft {
+                width: 0;
+                height: 0;
+                border-bottom: 50px solid #c0c0c0;
+                border-right: 50px solid transparent;
+                float: left;
+            }
+            
+            #triangle-topleft {
+                width: 0;
+                height: 0;
+                border-top: 50px solid #c0c0c0;
+                border-right: 50px solid transparent;
+                float: left;
+            }
+            #rectangle {
+                width: 240px;
+                height: 80px;
+                background: #c0c0c0;
+                float: left;
+                line-height: 80px;
+                font-size: 18px;
+                font-weight: 700;
+                padding: 10px;
+            }
+            .as{
+                width: 310px;
+                position: absolute;
+                top: 20px;
+            }
+        </style>
+        <link href="{{ STATIC_URL }}facebook.css" type="text/css" rel="stylesheet" media="all" />
+        <script src="{{ STATIC_URL }}statictest.js" type="text/javascript"></script>
+
+
+
+    </head>
+    <body>
+        {% include '_facebook_js.html' %}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="header">
+            <div class="wrapper">
+                <div style="float: left;" class="logo">
+                    <h1>
+                        eduudle
+                    </h1>
+                </div>
+                <div style="float: right;" class="login">
+                    <a class="loginButton" href="/coursewall">Login</a>
+                </div>
+                <div style="float: right;" class="password">
+                    Password <input class="search_field" type="text"/>
+                </div>
+                <div style="float: right;" class="username">
+                    Username <input class="search_field" type="text"/>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <h1 class="homepage_slogan">Access the best 250 technology courses on the internet</h1>
+            <div class="homepage_video_container">
+                <iframe src="https://www.facebook.com/video/embed?video_id=10152185517300414" width="530" height="298" frameborder="0"></iframe>
+            </div>
+            <div class="signup">
+                <div class="inner_signup">
+                    <div class="inner_signup_left">
+         
+        {% if not request.user.is_authenticated %}
+	    
+        <div class="inner_content">
+        	
+			<!--form to call registration via facebook -->
+            
+            <form action="{% url facebook_connect %}?facebook_login=1" method="post">
+	        
+	            <br />
+				<input type="hidden" value="{{ request.path }}" name="next" />
+				
+				<!--
+				use error next for a seperate error page
+				<input type="hidden" value="/error/" name="error_next" />
+				-->
+				<div id="facebook_login_js">
+				<input onclick="F.connect(this.parentNode.parentNode); return false;" type="image" src="{{STATIC_URL}}buttons/sign_up_with_fb.png" /><br />
+				</div>
+				<br /><br />
+	        </form>
+	        
+	        You are not logged in, Please login by clicking one of the buttons above
+			
+		</div>
+			
+		{% endif %}
+			
+			
+        <div id="header_bar">
+        
+        {% if request.user.is_authenticated %}
+            <h1>Welcome {{ request.user }}</h1><a href="{% url auth_logout %}?next={{ request.path|urlencode }}">logout</a><br />
+            
+            <form action="{% url facebook_connect %}?facebook_login=1" method="post">
+                <a href="javascript:void(0);" onclick="F.connect(this.parentNode);">Connect this account to Facebook</a> (used to connect non facebook accounts)
+                <input type="hidden" value="{{ request.path }}" name="next" />
+                <input type="hidden" name="connect_facebook" value="1">
+            </form>
+            
+        {% endif %}
+                        
+                        
+                        <h4 style="margin: 0 auto; width: 110px;">
+                            Or enter your
+                        </h4>
+                        <div class="signup_email">
+                            <img style="margin: 0; height: 26px; width: 25px; float: left;" src="{{STATIC_URL}}icons/email.png"/>
+                            <input class="search_field high_field" style="width: 230px;" type="text"/>
+                        </div>  
+                        <div class="signup_password">
+                            <img style="margin: 0; height: 26px; width: 25px; float: left;" src="{{STATIC_URL}}icons/password.png"/>
+                            <input class="search_field high_field" style="width: 230px;" type="text"/>
+                        </div>
+                        <input style="float: left;" type="checkbox" name="remember"/> <span class="lesser">Remember me next time</span> <br/>
+                        <p class="lesser">
+                            By clicking on "Sign up for free" below, you agree to the <a class="inText_link" href="javascript:">Terms of Service</a> and the <a class="inText_link" href="javascript:">Privacy Policy</a>.
+                        </p>
+                        <a class="img_btn sign_up_for_free" href="javascript:"><img src="{{STATIC_URL}}buttons/sign_up_for_free.png"/></a>
+                    </div>
+                    <div class="inner_signup_right">
+                        <div class="fb-facepile" data-href="https://www.facebook.com/TheInternationalConferenceOnGlobalEconomy" data-size="large" data-max-rows="4" data-width="100"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="search">
+                <img style="margin: 5px 2px; height: 18px; width: 18px; float: left;" src="{{STATIC_URL}}icons/search.png"/>
+                <input class="search_field high_field" style="width: 210px; float: left;" type="text"/>
+                <!--<a class="searchButton" href="/search">Search</a>-->
+                <a href="/search"><img src="{{STATIC_URL}}buttons/search.png"/></a>                
+            </div>
+            <ul class="bxslider">
+                <li>
+                    <div class="courses">
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/> 
+<div class="as">
+<div id="rectangle">Introduction to Psychology</div>
+<div id="triangle-topleft"></div>
+<div id="triangle-bottomleft"></div>
+</div>                       
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/>Ahmed Samy,<i> 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </li>
+                
+                
+                <li>
+                    <div class="courses">
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </li>
+                
+                
+                <li>
+                    <div class="courses">
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div class="homepage_course">
+                            <div class="homepage_course_university"><img class="homepage_course_university_img" src="{{STATIC_URL}}harvardLarge.png"/></div>
+                            <div class="homepage_course_img_container">
+                                <img style="width: 310px; height: 220px;" src="{{STATIC_URL}}sampleCourses/big/1.png"/>                        
+                            </div>
+                            <div class="homepage_course_info lesser_v">
+                                <div class="homepage_course_info_left">
+                                    244 Students
+                                </div>
+                                <div class="homepage_course_info_middle">
+                                    <img style="float: left;" src="{{STATIC_URL}}rating/5.png"/>(222)
+                                </div>
+                                <div class="homepage_course_info_right">
+                                    Free
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div class="featured_course_best_review">
+                                <p>
+                                    The course is really practical with tons of exercises on real-world problems. I also loved the instructors and thei... <a class="more" href="javascript:">more</a>
+                                </p>
+                                <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <i>Ahmed Samy, 12 votes</i>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </li>
+            </ul>
+            <div style="height: 400px;"></div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $('.bxslider').bxSlider();
+            });
+        </script>
+    </body>
+</html>

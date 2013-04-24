@@ -1,0 +1,92 @@
+from django.shortcuts import render_to_response
+from django.template import Context, loader, RequestContext
+from django.views.decorators.csrf import csrf_exempt
+from euudle.search import categorize_search , RapidSearch, transformQuery
+from euudle.models import *
+from django.http import *
+from accounts.models import *
+import re
+
+
+@csrf_exempt
+def register(request):
+    r = request.GET
+    email = r.get('email')
+    
+    name = re.match(r"(.*)@", email).group(0)[:-1]
+    password = r.get('password')
+    
+    x , y = Account.objects.register('hello',password,email)
+    
+    request.META['authenticated2'] = Account.objects.is_valid(email,password)[1]
+    
+    return HttpResponseRedirect('/coursewall')
+
+@csrf_exempt
+def login(request):
+    return HttpResponseRedirect('/')
+
+
+@csrf_exempt
+def drop_course(request):
+    r = request.GET
+    
+    
+
+@csrf_exempt
+def home(request):
+    return render_to_response("home.html", { 'logged' : request.META['account'] }, RequestContext(request))
+    
+def coursewall(request):
+    c = {}
+    c['acc'] = request.META['account']
+
+    return render_to_response("coursewall.html", c , RequestContext(request) )    
+    
+def course(request, course):
+
+    Course = BaseCourse.objects.get(pk=course)
+
+    return render_to_response("courseDetail.html", { 'course' : Course } , RequestContext(request))
+
+
+@csrf_exempt
+def add_coursewall(request, course):
+    
+    account = request.META['account']
+    try:
+        f_course = BaseCourse.objects.get(pk=course)
+        account.courses.add(f_course)
+    except:
+        return HttpResponse('Sorry, this course has already been added to your coursewall')
+    
+    return HttpResponse('This course was added to your coursewall')
+    
+    #return HttpResponseRedirect('/coursewall')
+
+@csrf_exempt   
+def ajaxsearch(request):
+    filter_dict = transformQuery(request.POST['query'])
+    
+    result = list(reversed(list((BaseCourse.objects.all()))))[:10]
+        
+    res = { 'courses' : result }
+        
+    return render_to_response("ajaxsearch.html", res , RequestContext(request))
+
+
+def search(request):
+    r = request.GET        
+    result = None
+    
+    for element in r:
+        result = getattr(RapidSearch, element)( RapidSearch() , str(r[element]), result ) 
+        
+    res = { 'courses' : result }
+    res['universities'] = common_university.objects.all()
+    res['all_univ_number'] = BaseCourse.objects.all().count() - udacity_course.objects.all().count()
+    res['price_range'] = ['0','100']
+        
+    
+    return render_to_response("search.html", res, RequestContext(request))
+    

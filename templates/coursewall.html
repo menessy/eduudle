@@ -1,0 +1,593 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+	<script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  
+	    ga('create', 'UA-40086523-1', 'eduudle.com');
+	    ga('send', 'pageview');      
+        </script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }            
+            *{
+                font-family: sans-serif;
+            }
+.go_to_class {
+	-moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0) );
+	background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+	background-color:#3d94f6;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #1570cd;
+        float: left;
+        margin: 15px 10px 10px 0;
+}.go_to_class:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6) );
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background-color:#1e62d0;
+}.go_to_class:active {
+}
+    .review_button {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #73c0f4), color-stop(1, #4a80d3) );
+	background:-moz-linear-gradient( center top, #73c0f4 5%, #4a80d3 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#73c0f4', endColorstr='#4a80d3');
+	background-color:#73c0f4;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #666666;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow: 0 1px 1px #000000;
+	cursor: pointer;
+    }
+    .review_button:hover {
+	background:#73c0f4;
+    }
+    .review_button:active {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #224d8c), color-stop(1, #73c0f4) );
+	background:-moz-linear-gradient( center top, #224d8c 5%, #73c0f4 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#224d8c', endColorstr='#73c0f4');
+	background-color:#73c0f4;
+    }
+
+
+            .sign_up_for_free {
+                    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #669933), color-stop(1, #336633) );
+                    background:-moz-linear-gradient( center top, #669933 5%, #336633 100% );
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#669933', endColorstr='#336633');
+                    background-color:#669933;
+                    -moz-border-radius:8px;
+                    -webkit-border-radius:8px;
+                    border-radius:8px;
+                    border:1px solid #000000;
+                    display:inline-block;
+                    color:#ffffff;
+                    font-family:arial;
+                    font-size:15px;
+                    font-weight:bold;
+                    padding:6px 28px;
+                    text-decoration:none;
+		    cursor: pointer;
+		    text-shadow: 0px 1px 1px #000000;
+            }.sign_up_for_free:hover {
+		background: #669933;
+		/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #496632), color-stop(1, #98b879) );*/
+		/*background:-moz-linear-gradient( center top, #496632 5%, #98b879 100% );*/
+		/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#496632', endColorstr='#98b879');*/
+		/*background-color:#496632;*/
+            }.sign_up_for_free:active {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #254b25), color-stop(1, #669933) );
+		background:-moz-linear-gradient( center top, #254b25 5%, #669933 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#254b25', endColorstr='#669933');
+		background-color:#254b25;
+            }
+
+
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .featured_course{
+                width: 188px;
+                border: 1px solid #8cdaff;
+                padding: 2px;
+            }
+            .featured_course_count{
+                float: left;
+            }
+            .featured_course_header{
+                border-bottom: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .high_field{
+                height: 28px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 540px;
+                padding: 5px 0 0 10px;
+            }
+            .coursewall_course_right{
+                float: left;
+                width: 178px;
+                padding: 4px 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+		font-size: 11px;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }
+            .coursewall{
+                margin: 0 0 0 70px;
+                padding: 14px 10px 13px 10px;
+                font-size: 20px;
+                font-weight: 700;
+		background: #4a80d3;
+
+            }
+            .profile_menu{
+                margin: 4px 0 0 0;
+                padding: 10px 10px 5px 10px;
+                font-size: 20px;
+                font-weight: 700;         
+            }
+            .logo_anch{
+                color: #ffffff;
+                text-decoration: none;
+            }
+            .coursewall_course_price{
+                background: url('{{STATIC_URL}}price_background old.png');
+                color: #ffffff;
+                float: left;
+                width: 54px;
+                height: 20px;
+                margin: 1px 0 3px -3px;
+                padding: 7px;
+                font-weight: 700;
+            }
+            .clr{
+                clear: both;
+            
+            }
+            .featured_course_rating{
+                float: right;
+            }
+            .featured_course_best_review{
+                font-size: 12px;
+                font-weight: 300;
+            }
+            .search{
+                margin: 6px 0 0 115px;
+                background: #ffffff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+                float: left;
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .header{
+                width: 100%;
+                height: 52px;
+                color: #ffffff;
+background: #73c0f4; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzczYzBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YTgwZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #73c0f4 0%, #4a80d3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73c0f4), color-stop(100%,#4a80d3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #73c0f4 0%,#4a80d3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73c0f4', endColorstr='#4a80d3',GradientType=0 ); /* IE6-8 */
+	    }
+		    .dropdown{
+			position: absolute;
+			background: #f2f2f2;
+			right: 0;
+			top: 52px;
+			z-index: 9999;
+			display: none;
+			border-bottom: 2px solid #bcbcbc;
+			width: 125px;
+		    }
+		    .daaa{
+			color: #333;
+			text-decoration: none;
+			padding: 10px;
+			margin: 0 0 2px 0;
+			float: left;
+			clear: both;
+			width: 105px;
+		    }
+		    .daaa:hover{
+			color: #fff;
+			background: #333;
+			margin: 0 0 0 0;
+			border-bottom: 2px solid #d8d8d8;
+		    }
+		    .wrapper{
+			position: relative;
+		    }
+	    .whityy{
+		background: rgba(255,255,255,0.6);
+		position: fixed;
+		z-index: 999;
+		height: 100%;
+		width: 100%;
+		display: none;
+	    }
+	    .review_form{
+		display: none;
+		background: rgba(0,0,0,0.7);
+		padding: 5px;
+		position: fixed;
+		width: 450px;
+		/*height: 250px;*/
+		z-index: 99999;
+		top: 50%;
+		left: 50%;
+		margin: -125px 0 0 -225px;
+		border-radius: 10px;
+	    }
+	    .inner_review_form{
+		background: #ffffff;
+		border-radius: 7px;
+		padding: 10px;
+	    }
+	    .submit{
+		border: 0px;
+		padding: 7px;
+		border-radius: 4px;
+		margin: 7px;
+		background: #dadada;
+		cursor: pointer;
+		color: #333;
+		text-decoration: none;
+	    }
+	    .submit:hover{
+		color: #838383;	
+		background: #f0f0f0;	
+	    }
+	    .close{
+		color: #333;
+		text-decoration: none;
+	    }
+	    .close:hover{
+		color: #838383;
+	    }
+            .signup{
+                margin: 0 auto;
+                width: 310px;
+                background: #4f4f4f;
+                height: 276px;
+                padding: 10px;
+            }
+            .signup_email, .signup_password{
+                margin: 10px 0;
+                width: 260px;
+                background: #fff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;                
+            }
+                    .password_f{
+                        border: 1px solid #333;
+                    }
+                    .password_f:hover{
+                        border: #00003e 1px solid;               
+                        box-shadow: 0px 0px 10px #0080ff;   
+                        
+                    }
+                    .email_f{
+                        border: 1px solid #333;                        
+                    }
+                    .email_f:hover{
+                        border: #00003e 1px solid;               
+                        box-shadow: 0px 0px 10px #0080ff;                           
+                    }
+                    .new_active{
+                        border: #00003e 1px solid;               
+                        box-shadow: 0px 0px 10px #0080ff;                          
+                    }
+.signup{
+    position: fixed;
+    z-index: 9100;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -155px;
+    /*background: #fff;*/
+    display: none;
+}
+        </style>
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.js"></script>  
+	<script>	
+	    function hideRev(){
+		$('.whityy').hide();
+		$('.review_form').hide();
+	    }
+	    function writeaReview(cname, cid){
+		$('#crs_name').html(cname);
+		$('#cid').val(cid);
+		$('.whityy').show();
+		$('.review_form').show();
+	    }
+	    function submitRev(){
+		$('#form_rev').submit();
+		hideRev();
+	    }
+	</script>
+    </head>
+    <body>
+	
+	<div class="whityy"></div>
+	<div class="whityy2"></div>
+	<div class="review_form">
+	    <div class="inner_review_form">
+		<h4 style="float: left; width: 370px;" id="crs_name">
+		    CRS NAME
+		</h4>
+		<a class="close" style="float: right;" href="javascript:hideRev();">close</a>
+		<div style="clear: both;"></div>
+		<form action="/review" method="post" id="form_rev">
+		    <input type="hidden" value="null" name="course_id" id="cid"/>
+		    <table style="float: left;">
+			<tr>
+			    <td>
+				
+			    </td>
+			    <th>
+				1
+			    </th>
+			    <th>
+				2
+			    </th>
+			    <th>
+				3
+			    </th>
+			    <th>
+				4
+			    </th>
+			    <th>
+				5
+			    </th>
+			</tr>
+			<tr>
+			    <td>
+				Content-Rich
+			    </td>
+			    <td>
+				<input type="radio" name="cr" value="1"/>
+			    </td>
+			    <td>
+				<input type="radio" name="cr" value="2"/>
+			    </td>
+			    <td>
+				<input type="radio" name="cr" value="3"/>
+			    </td>
+			    <td>
+				<input type="radio" name="cr" value="4"/>
+			    </td>
+			    <td>
+				<input type="radio" name="cr" value="5"/>
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Interactive
+			    </td>
+			    <td>
+				<input type="radio" name="interactive" value="1"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="interactive" value="2"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="interactive" value="3"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="interactive" value="4"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="interactive" value="5"/>				
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Enjoyable
+			    </td>
+			    <td>
+				<input type="radio" name="enjoyable" value="1"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="enjoyable" value="2"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="enjoyable" value="3"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="enjoyable" value="4"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="enjoyable" value="5"/>				
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Career-Oriented
+			    </td>
+			    <td>
+				<input type="radio" name="co" value="1"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="co" value="2"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="co" value="3"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="co" value="4"/>				
+			    </td>
+			    <td>
+				<input type="radio" name="co" value="5"/>				
+			    </td>
+			</tr>
+		    </table>
+		    <textarea name="text" style="width: 180px; height: 120px;"></textarea>
+		    <a class="submit" href="javascript:submitRev();" style="float: right;">Submit</a>
+		</form>
+		<div style="clear: both;"></div>
+	    </div>
+	</div>
+	
+	{% include "topbar.html" %}
+	
+	
+        <div style="clear: both;"></div>
+        <div class="wrapper">
+            <div class="lefty">
+                <h4>
+                    Featured Courses
+                </h4>
+                <div class="featured_course">
+                    <div class="featured_course_header">
+                        <div class="coursewall_course_price" style="margin-left: -7px;">{% if featured.cost == 0 %}Free{% else %}{{ featured.cost }}{% endif %}</div>
+                        <img style="width: 100px; float: right;" src="{{ featured.university.url_icon }}"/>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="featured_course_title">
+                        {{ featured.course_name }}
+                    </div>
+                    <div class="featured_course_detail">
+                        <img style="margin: 0 0 5px 0;" width="185px" height="150px" src="{{ featured.course_image }}"/>
+                        <div style="clear: both;"></div>
+                        <!--<div class="featured_course_count">
+                            <img style="float: left;" src="{{STATIC_URL}}icons/enrolled.png"/> {{ featured.account_set.all|length }}
+                        </div>
+                        <div class="featured_course_rating">
+                            <img style="float: left;" src="{{STATIC_URL}}rating/{{ featured.rating|floatformat:"0" }}.png"/>({{ featured.reviews.all|length }})
+                        </div>-->
+                        <div class="clr"></div>
+                        {% if featured.get_max_review != None %}
+                        <div class="featured_course_best_review">
+                            <p>
+                                {{ featured.get_max_review.review|truncatechars:115 }} <a class="more" href="javascript:">more</a>
+                            </p>
+                            <img style="float: left;" src="{{ featured.avatar.url }}"/> <div class="italic">{{ featured.get_max_review.account.name }}, {{ featured.get_max_review.agree }} votes</div>
+                        </div>
+                        {% endif %}
+                        <div class="clr"></div>
+                        <a id="course_left_detail_1" class="img_btn searchButton" href="/course/{{ featured.pk }}" style="padding: auto 6px; font-size: 12px;"><img style="height: 15px; float: left; margin: 0 4px 0 0;" src="{{STATIC_URL}}view_d.png"/> View Course Details</a> 
+                    </div>
+                </div>
+            </div>
+        
+            <div class="main">            
+                <h4>
+                    Following {{ logged.courses.all|length }} courses
+                </h4>
+                
+                {% for i in logged.courses.all %}
+                
+                <div class="coursewall_course">
+                    <div class="coursewall_course_left">
+                        <!--all imges are of width 188px-->                    
+                        <div style="width: 100px; margin: 0 auto;"><img style="width: 100px; height: 45px;" src="{{ i.university.url_icon }}"/>                    </div>
+                        <img style="width: 188px;" src="{{ i.course_image }}"/>
+                    </div>
+                    <div class="coursewall_course_middle">
+                        <h3>{{ i.course_name }}</h3>
+                        
+                        <span style="float: left; line-height: 20px; margin: 0 10px 0 0;">
+			By {% for x in i.instructors.all %} {{ x.name }}{% if forloop.last %}{%else%},{% endif %} {% endfor %}
+                            <!--<a href=""><img src="{{STATIC_URL}}icons/m_home.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_tw.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_in.png"/></a>
+                            <a href=""><img src="{{STATIC_URL}}icons/m_fb.png"/></a>-->
+                        <br/>
+                        
+                        <a class="img_btn sign_up_for_free" target="_blank" href="{{ i.link }}" style="margin: 20px 20px 0 0;"><img style="float: left; margin: 0 10px 0 0; width: 30px;" src="{{STATIC_URL}}icons/go_arrow.png"/> Go to Class</a>    
+                        <a class="img_btn review_button" href="javascript:writeaReview('{{ i.course_name }}', '{{ i.id }}');"  style="margin: 20px 20px 0 0;"><img style="float: left; margin: 0 10px 0 0; height: 19px;" src="{{STATIC_URL}}icons/review.png"/> Write A Review</a>
+                        
+                    </div>
+                    <div class="coursewall_course_right">
+                        <img style="float: left; margin: 2px 10px 0 0;" src="{{STATIC_URL}}icons/calendar.png"/>{% if i.engine == 'COURSERA' %}{{ i.coursera_course.start_date }}{% elif i.engine == 'EDX' %}{{ i.edx_course.start_date }}{% endif %}<br style="clear: both;"/><br/><br/><br/><br/><br style="clear: both;"/>
+                        <img style="float: left;" src="{{STATIC_URL}}icons/drop.png"/> <a class="drop_course" href="/drop_course/{{ i.pk }}">Drop from CourseWall</a>                    
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                
+                {% endfor %}
+                
+            </div>
+        </div>
+    </body>
+</html>

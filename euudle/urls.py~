@@ -1,0 +1,35 @@
+from django.conf.urls import patterns, include, url
+import settings
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    
+    url(r'^$', 'euudle.views.home', name='home'),
+    url(r'^login$', 'euudle.views.login' ),
+    
+    url(r'^ajaxsearch$', 'euudle.views.ajaxsearch'),
+    url(r'^search', 'euudle.views.search'),
+    url(r'^register$' , 'euudle.views.register'),
+    
+    
+    url(r'^coursewall$', 'euudle.views.coursewall'),
+    
+    url(r'^course/(?P<course>.*)$', 'euudle.views.course'),
+    
+    url(r'^add_to_coursewall/(?P<course>.*)$', 'euudle.views.add_coursewall'),
+    
+    url(r'^facebook/', include('django_facebook.urls')),
+    url(r'^accounts/', include('django_facebook.auth_urls')),
+    
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
+)
+
+
+if settings.MODE == 'userena':
+    urlpatterns += patterns('',(r'^accounts/', include('userena.urls')),)
+elif settings.MODE == 'django_registration':
+    urlpatterns += patterns('',(r'^accounts/', include('registration.backends.default.urls')), )
+

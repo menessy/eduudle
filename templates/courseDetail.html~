@@ -1,0 +1,700 @@
+<html>
+    <head>
+        <title>eduudle - the Greatest University in the World</title>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.js"></script>  
+        <style>
+            .jslider .jslider-bg i,
+            .jslider .jslider-pointer { background: url({{STATIC_URL}}jslider.png) no-repeat 0 0; }
+            .jslider_plastic .jslider-bg i,
+            .jslider_plastic .jslider-pointer { background-image: url({{STATIC_URL}}jslider.plastic.png); }
+        </style>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jslider.css" type="text/css">
+            
+	<script type="text/javascript" src="{{STATIC_URL}}js/jshashtable-2.1_src.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.numberformatter-1.2.3.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/tmpl.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.dependClass-0.1.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/draggable-0.1.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.slider.js"></script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            *{
+                font-family: sans-serif;                
+            }
+            .searchButton {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+            }
+            .searchButton:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .searchButton:active {
+                position:relative;
+                top:1px;
+            }
+
+            .coursewall_course *, .coursewall_course, .row, .trans{
+                -webkit-transition: all 0.2s ease-in-out;
+                -moz-transition: all 0.2s ease-in-out;
+                -o-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+            }
+            .wrapper{
+                width: 1160px;
+                margin: 0 auto;
+            }
+            .header{
+                width: 100%;
+                height: 40px;
+                background: #004e9b;
+                color: #ffffff;
+            }
+            .lefty{
+                width: 190px;
+                float: left;
+                margin: 0 28px 0 0;
+            }
+            h1{
+                margin: 0;
+            }
+            h3{
+                margin: 2px 0 15px 0;
+            }
+            h4{
+                color: #333;
+            }
+            .more{
+                color: #ff8000;
+                text-decoration: none;
+            }
+            .more:hover{
+                text-decoration: underline;
+            }            
+            .main{
+                float: left;
+            }
+            .coursewall_course{
+                width: 920px;
+                border: 1px solid #8cdaff;
+                margin: 0 0 20px 0;
+                padding: 0;
+            }
+            .coursewall_course:hover{
+                box-shadow: 0px 0px 18px #8a8a8a;                
+            }
+            .coursewall_course_left{
+                float: left;
+                width: 188px;
+            }
+            .coursewall_course_middle{
+                float: left;
+                width: 530px;
+                padding: 5px;
+                height: 153px;
+                border-right: 1px solid #8cdaff;
+            }
+            .coursewall_course_right{
+                float: left;
+                width: 181px;
+                padding: 5px;
+                height: 153px;
+                margin: 0;
+            }
+            .drop_course{
+                color: #333;
+                text-decoration: none;
+            }
+            .drop_course:hover{
+                text-decoration: underline;
+            }
+            .search{
+                margin: 1px 0 0 115px;
+                background: #ffffff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+                float: left;
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .coursewall{
+                margin: 0 0 0 70px;
+                padding: 14px 10px 13px 10px;
+                font-size: 20px;
+                font-weight: 700;
+		/*background: #4a80d3;*/
+
+            }
+            .profile_menu{
+                margin: 4px 0 0 0;
+                padding: 10px 10px 5px 10px;
+                font-size: 20px;
+                font-weight: 700;         
+            }
+            .logo_anch{
+                color: #ffffff;
+                text-decoration: none;
+            }
+            .sorting{
+                float: right;
+                margin: 20px;
+            }
+            .course_short_desc{
+                font-size: 13px;
+                line-height: 16px;
+                opacity: 0;
+            }            
+            .lesser{
+                font-size: 13px;
+                color: #333;
+            }
+            .filters{
+                width: 188px;
+                padding: 0;
+                box-shadow: 0px 0px 18px #8a8a8a;   
+            }
+            .filter{
+                padding: 8px 12px;
+                box-shadow: 0px 0px 10px #8a8a8a; 
+                border: 1px solid #8cdaff;
+            }
+            .filter h4{
+                margin: 0;
+            }
+            .sub_filter{                
+                border-left: 1px solid #8cdaff;
+                border-right: 1px solid #8cdaff;
+                border-bottom: 1px solid #8cdaff;
+                padding: 8px 0;
+            }
+            .featured_course_count{
+                float: left;
+            }
+	    
+             .add_to_b {
+                float: left;
+	-moz-box-shadow:inset 0px 1px 0px 0px #37472a;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #37472a;
+	box-shadow:inset 0px 1px 0px 0px #37472a;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9ac473), color-stop(1, #506b3b) );
+	background:-moz-linear-gradient( center top, #9ac473 5%, #506b3b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9ac473', endColorstr='#506b3b');
+	background-color:#9ac473;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 10px 6px 5px;
+	text-decoration:none;
+}.add_to_b:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #506b3b), color-stop(1, #9ac473) );
+	background:-moz-linear-gradient( center top, #506b3b 5%, #9ac473 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#506b3b', endColorstr='#9ac473');
+	background-color:#506b3b;
+}.add_to_b:active {
+	position:relative;
+	top:1px;
+}
+
+            .featured_course_header{
+                border-left: 1px solid #8cdaff;
+                border-right: 1px solid #8cdaff;
+            }
+            .featured_course_title{
+                border-bottom: 1px solid #8cdaff;
+                padding: 7px 2px;
+            }
+            .row{
+                padding: 2px 7px;
+            }
+            .row:hover{
+                background: #8cdaff;
+            }
+            .view_course_details{
+                opacity: 0;
+                margin: 0 15px;
+            }
+            .add_to_coursewall{
+                opacity: 0;
+                margin: 0 15px;
+            }
+            .high_field{
+                height: 28px;
+            }
+            .coursewall_course_price{
+                background: url('{{STATIC_URL}}price_background.png');
+                color: #ffffff;
+                float: left;
+                width: 54px;
+                height: 20px;
+                margin: 5px 0 0 0;
+                padding: 7px;
+                font-weight: 700;
+            }
+	    .play_b {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background-color: rgba(255, 255, 255, 0.7);
+		-moz-border-radius:15px;
+		-webkit-border-radius:15px;
+		border-radius:15px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		color:#666666;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 6px 6px 12px;
+		text-decoration:none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -10px;
+		margin-left: -78px;
+	    }.play_b:active {
+		position:relative;
+		top:1px;
+	    }
+
+	    .go_to_b {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+		background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+		background-color:#ededed;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		color:#777777;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 10px 6px 5px;
+		text-decoration:none;
+		margin: 0 20px;
+	    }.go_to_b:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+		background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+		background-color:#dfdfdf;
+	    }.go_to_b:active {
+		position:relative;
+		top:1px;
+	    }
+	    
+	    
+	    
+	    
+	    .course_detail_left{
+		width: 500px;
+		float: left;
+		margin-bottom: 30px;
+	    }
+	    .inner_right_course_data{
+		float: right;
+	    }
+	    .img_container{
+		float: left;
+		position: relative;
+		width: 400px;
+		height: 257px;
+	    }
+	    .course_detail_right{
+		margin: 25px 0 0 20px;
+		width: 500px;
+		float: left;
+	    }
+	    .iicon{
+		margin: 8px;
+	    }
+	    .tab{
+		border: 1px solid #939393;
+		border-bottom: 0px;
+		text-decoration: none;
+		color: #333;
+		width: 500px;
+		text-align: center;
+		padding: 10px;
+		margin: 10px 20px 0 20px;
+		background: #d4d4d4;
+		
+		-webkit-border-top-left-radius: 10px;
+		-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	    }
+	    .lower_tab{
+		border: 1px solid #939393;		
+		margin: 9px 0 30px 0;
+		padding: 20px;
+	    }
+	    .overall{
+		background: url({{STATIC_URL}}grey_banner.png);
+		width: 170px;
+		height: 58px;
+		padding: 10px 0 0 30px;
+		margin-left: -26px;
+		float: left;
+	    }
+	    .subrates{
+		float: left;
+		width: 500px;
+		margin: 0 0 0 100px;
+	    }
+	    
+	    .bubble{
+		position: relative;
+		padding: 10px;
+		width: 850px;
+		background: #b8c6df; /* Old browsers */
+		/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4YzZkZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ZDg4YjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+		background: -moz-linear-gradient(top,  #b8c6df 0%, #6d88b7 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b8c6df), color-stop(100%,#6d88b7)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #b8c6df 0%,#6d88b7 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #b8c6df 0%,#6d88b7 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #b8c6df 0%,#6d88b7 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #b8c6df 0%,#6d88b7 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8c6df', endColorstr='#6d88b7',GradientType=0 ); /* IE6-8 */
+		border: #7F7F7F solid 1px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	    }
+	    
+	    .bubble:after{
+		content: "";
+		position: absolute;
+		top: 20px;
+		left: -25px;
+		border-style: solid;
+		border-width: 5px 25px 5px 0;
+		border-color: transparent #B2C1DC;
+		display: block;
+		width: 0;
+		z-index: 1;
+	    }
+	    
+	    .bubble:before{
+		content: "";
+		position: absolute;
+		top: 20px;
+		left: -26px;
+		border-style: solid;
+		border-width: 5px 25px 5px 0;
+		border-color: transparent #7F7F7F;
+		display: block;
+		width: 0;
+		z-index: 0;
+	    }
+	    .review{
+		margin: 0 0 20px 0;
+	    }
+	    .current_tab, .tab:hover{
+		background: #fff;
+		color: #000;
+		padding: 10px 10px 12px 10px;
+	    }
+            .searchButton {
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5f5f5), color-stop(1, #d1d1d1) );
+                background:-moz-linear-gradient( center top, #f5f5f5 5%, #d1d1d1 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#d1d1d1');
+                background-color:#f5f5f5;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #666666;
+                display:inline-block;
+                color:#777777;
+                font-family:arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+		margin: 0;
+		float: right;
+            }
+            .searchButton:hover {
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d1d1d1), color-stop(1, #f5f5f5) );
+                background:-moz-linear-gradient( center top, #d1d1d1 5%, #f5f5f5 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1d1d1', endColorstr='#f5f5f5');
+                background-color:#d1d1d1;
+            }
+            .searchButton:active {
+                position:relative;
+                top:1px;
+            }
+            .search{
+                margin: 6px 0 0 115px;
+                background: #ffffff;
+                border: #727272 2px solid;
+                padding: 2px;
+                border-radius: 7px;
+                float: left;
+            }
+            .search_field{
+                border: 0px;
+                width: 250px;
+            }
+            .header{
+                width: 100%;
+                height: 52px;
+                color: #ffffff;
+background: #73c0f4; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzczYzBmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YTgwZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #73c0f4 0%, #4a80d3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#73c0f4), color-stop(100%,#4a80d3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #73c0f4 0%,#4a80d3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #73c0f4 0%,#4a80d3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73c0f4', endColorstr='#4a80d3',GradientType=0 ); /* IE6-8 */
+   
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="wrapper">
+                <div style="float: left; margin: 5px 0 0 0;" class="logo">
+                    <h1>
+                        <a class="logo_anch" href="/">eduudle</a>
+                    </h1>
+                </div>
+            <form method="get" action="/search">
+            <div class="search">
+                <img style="margin: 5px 2px; height: 18px; width: 18px; float: left;" src="{{STATIC_URL}}icons/search.png"/>
+                <input class="search_field high_field" name="term" style="width: 210px; float: left;" type="text"/>
+                <a class="searchButton" href="/search">Search</a>
+                <!--<a href="/search"><img src="{{STATIC_URL}}buttons/search.png"/></a>                -->
+            </div>
+            </form>
+            </form>
+                <div style="float: left;" class="coursewall">
+                    <img style="margin: 3px 4px 0 0; float: left;" src="{{STATIC_URL}}icons/coursewall.png"/>
+                    <span style="float: left;">CourseWall</span>
+                </div>
+                <div style="float: left;" class="profile_menu">
+                    <img style="float: left;" src="{{STATIC_URL}}pp.png"/> <span style="float: left;">Bassem</span> <img style="width: 10px; height: 8px; margin: 9px 0 0 10px;" src="{{STATIC_URL}}menu.png"/>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="wrapper">
+	    <div class="course_detail_left">
+		<h2>
+		    {{ course.course_name }}
+		</h2>
+		<h4 style="margin: -15px 0 0 0;">
+		    By {% for i in course.instructors.all %} {{ i.name }} , {% endfor %}
+		</h4>
+		<img style="margin: 20px 0 10px; float: left;" src="{{ course.university.url_icon }}"/>
+		<div class="inner_right_course_data">
+		    <div style="float: left; margin: 10px 10px 0 0;">
+			<img style="float: left;" src="{{STATIC_URL}}icons/shape.png"/>
+			<span style="float: left; margin: 3px 5px;">{% if course.engine == 'COURSERA' %}
+                            {% if course.coursera_course.cost == 0 %}
+                                Free
+                            {% else %}
+                                {{ course.coursera_course.cost }}
+                            {% endif %}
+                        {% elif course.engine == 'EDX' %}
+                            {% if course.edx_course.cost == 0 %}
+                                Free
+                            {% else %}
+                                {{ course.edx_course.cost }}
+                            {% endif %}
+                        {% elif course.engine == 'UDACITY' %}
+                            {% if course.udacity_course.cost == 0 %}
+                                Free
+                            {% else %}
+                                {{ course.udacity_course.cost }}
+                            {% endif %}
+                        {% endif %}</span>
+		    </div>
+		    <div style="float: left; margin: 10px 10px 0 0;">
+			<img style="float: left; margin: 4px 0 0 0;" src="{{STATIC_URL}}icons/clock.png"/>
+			<span style="float: left; margin: 3px 5px;">{% if course.engine == 'COURSERA' %}{{ course.coursera_course.work_load }}{% elif course.engine == 'EDX' %}{{ course.edx_course.work_load }}{% elif course.engine == 'UDACITY' %}Not Available{% endif %}</span>
+		    </div>
+		    <div style="clear: both;"></div>
+		    <div style="float: left; margin: 10px 10px 0 0;">
+			<img style="float: left;" src="{{STATIC_URL}}icons/filter_enrollment.png"/>
+			<span style="float: left; margin: 3px 5px;">{{ course.account_set.all|length }}</span>
+		    </div>
+		    <div style="float: left; margin: 10px 10px 0 0;">
+			<img style="float: left; margin: 4px 0 0 0;" src="{{STATIC_URL}}icons/calendar.png"/>
+			<span style="float: left; margin: 3px 5px;">{% if course.engine == 'COURSERA' %}{{ course.coursera_course.start_date }}{% elif course.engine == 'EDX' %}{{ course.edx_course.start_date }}{% endif %}</span>
+		    </div>
+		</div>
+		<div style="clear: both;"></div>
+		<p>
+		    {{ course.short_description }}
+		</p>
+		<a id="course_left_add_1" class="add_to_b" href="/add_to_coursewall/{{ course.pk }}"><img style="float: left; margin: 0 10px 0 0;" src="{{STATIC_URL}}add_to_b.png"/> Add to CourseWall</a>
+		<a id="course_left_add_1" class="go_to_b" href="{{ course.link }}"><img style="float: left; margin: 0 10px 0 0; height: 20px;" src="{{STATIC_URL}}icons/go2arrow.png"/> Go to Official Page</a>
+		<div style="clear: both;"></div>
+	    </div>
+	    <div class="course_detail_right">
+		<div class="img_container">
+		    <img style="width: 400px; float: left;" src="{{ course.course_image }}"/>
+		    <a href="{{ course.youtube_video }}" class="play_b"><span style="float: left;">Watch Intro Video</span><img style="float: left; margin: 0 0 0 10px; height: 20px;" src="{{STATIC_URL}}icons/play.png"/></a>
+		    <div style="clear: both;"></div>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="icons">
+		    <img class="iicon" style="margin: 8px 8px 8px 0;"  src="{{STATIC_URL}}icons/bouee.png"/>
+		    <img class="iicon" src="{{STATIC_URL}}icons/badge.png"/>
+		    <img class="iicon" src="{{STATIC_URL}}icons/bubbles.png"/>
+		    <img class="iicon" src="{{STATIC_URL}}icons/gym.png"/>
+		</div>
+	    </div>
+	    <div style="clear: both;"></div>
+	    
+	    <div class="lower_tabs">
+		<div class="tabs">
+		    <a id="desc_t" class="tab current_tab" href="javascript: sh_ow('#description', '#desc_t');">Description</a>
+		    <a id="revi_t" class="tab" href="javascript: sh_ow('#reviews', '#revi_t');">Reviews</a>
+		    <a id="inst_t" class="tab" href="javascript: sh_ow('#instructors', '#inst_t');">Instructor(s)</a>
+		</div>
+		<div id='description' class="description lower_tab">
+		    <h4>About the Course</h4>
+		    {% if course.full_description == '' and course.short_description == '' %}
+		        No available description
+		    {% elif course.full_description == '' %}
+		        {{ course.short_description }}
+		    {% else %}
+		        {{ course.full_description }}
+		    {% endif %}
+		</div>
+		<div id="instructors"  style="display: none;" class="instructors lower_tab">
+		
+		    {% for i in course.instructors.all %}
+		    <div style="width: 240px;">
+			<img style="height: 90px; width: 80px; float: left;" src="{{ i.image }}"/>
+			<span style="float: left; margin: 10px; font-weight: 700;">{{ i.name }}</span>		    
+			<a href=""><img style="margin: 0 0 0 8px;" src="{{STATIC_URL}}icons/m_home.png"/></a>
+			<a href=""><img src="{{STATIC_URL}}icons/m_tw.png"/></a>
+			<a href=""><img src="{{STATIC_URL}}icons/m_in.png"/></a>
+			<a href=""><img src="{{STATIC_URL}}icons/m_fb.png"/></a>
+			<div style="clear: both;"></div>
+		    </div>
+		    <p style="border-bottom: 1px solid #b4b4b4; padding: 0 0 10px 0;">
+			{{ i.description }}
+		    </p>
+		    
+		    
+		</div>
+		<div id='reviews' style="display: none;" class="reviews lower_tab">
+		    <div class="overall">
+			<h4 style="margin: 4px 0;">Overall Rating</h4>
+			<img src="{{STATIC_URL}}rating/4.png"/>
+		    </div>
+		    <div class="subrates">
+			<div class="subrate" style="float: left; margin-bottom: 20px;">
+			    <h4 style="margin: 0px 20px; float: left;">Content-Rich</h4>
+			    <img style="width: 100px; float: left;" src="{{STATIC_URL}}rating/cr4.png"/>
+			</div>
+			<div class="subrate" style="float: right; margin-bottom: 20px;">
+			    <h4 style="margin: 0px 20px; float: left;">Interactive</h4>
+			    <img style="width: 100px; float: left;" src="{{STATIC_URL}}rating/i4.png"/>
+			</div>
+			<div class="subrate"  style="float: left;">
+			    <h4 style="margin: 0px 30px; float: left;">Enjoyable</h4>
+			    <img style="width: 100px; float: left;" src="{{STATIC_URL}}rating/e4.png"/>
+			</div>
+			<div class="subrate"  style="float: right;">
+			    <h4 style="margin: 0px 20px; float: left;">Career-Oriented</h4>
+			    <img style="width: 100px; float: left;" src="{{STATIC_URL}}rating/co4.png"/>
+			</div>
+		    </div>
+		    <div style="clear: both;"></div>
+		    <div class="reviews_lower">
+			<h4>
+			    35 Reviews
+			</h4>
+			<div class="review">
+			    <div style="float: left; width: 100px; margin: 0 20px 0 0;">
+				<img src="{{STATIC_URL}}buttons/up.png"/> <h4 style="margin: 0 0 0 15px;">15 Votes</h4><img src="{{STATIC_URL}}buttons/down.png"/>
+			    </div>
+			    <img style="height: 90px; width: 80px; float: left;" src="{{STATIC_URL}}void.png"/>
+			    <div class="bubble_container" style="position: relative; float: left; margin: 0 0 0 25px;">
+				<div class="bubble">
+				    Aenean eu est. Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui. Vestibulum accumsan.<br/><br/>
+				    Aenean eu est. Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui. Vestibulum accumsan  Aenean eu est. Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui. Vestibulum accumsan
+				</div>
+			    </div>
+			    <div style="clear: both;"></div>
+			</div>
+			<div class="review">
+			    <div style="float: left; width: 100px; margin: 0 20px 0 0;">
+				<img src="{{STATIC_URL}}buttons/up.png"/> <h4 style="margin: 0 0 0 15px;">15 Votes</h4><img src="{{STATIC_URL}}buttons/down.png"/>
+			    </div>
+			    <img style="height: 90px; width: 80px; float: left;" src="{{STATIC_URL}}void.png"/>
+			    <div class="bubble_container" style="position: relative; float: left; margin: 0 0 0 25px;">
+				<div class="bubble">
+				    Aenean eu est. Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui. Vestibulum accumsan.<br/><br/>Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui. Vestibulum accumsan
+				</div>
+			    </div>
+			    <div style="clear: both;"></div>
+			</div>
+		    </div>
+		    <div style="clear: both;"></div>
+		</div>
+	    </div>
+	</div>
+	    <script>
+		function sh_ow(idd, bid){
+		    $('#description').hide();
+		    $('#reviews').hide();
+		    $('#instructors').hide();
+		    $(idd).show();
+		    
+		    
+		    $('#desc_t').removeClass('current_tab');
+		    $('#revi_t').removeClass('current_tab');
+		    $('#inst_t').removeClass('current_tab');
+		    $(bid).addClass('current_tab');
+		}
+	    </script>
+    </body>
+</html>
